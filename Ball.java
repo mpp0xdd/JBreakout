@@ -19,9 +19,30 @@ public class Ball {
     this.vy = vy;
   }
 
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
+  }
+
   public void draw(Graphics g) {
     g.setColor(color);
     g.fillOval(x, y, SIZE, SIZE);
+  }
+
+  public void bounceX() {
+    vx = -vx;
+  }
+
+  public void bounceY() {
+    vy = -vy;
+  }
+
+  public void bounce() {
+    bounceX();
+    bounceY();
   }
 
   public void move() {

@@ -81,6 +81,13 @@ public class MainScreen extends GameScreen {
   @Override
   protected void runGameLoop() {
     ball.move();
+    if(ball.getX() < 0 || ball.getX() + Ball.SIZE > SCREEN_WIDTH) {
+      ball.bounceX();
+    }
+    if(ball.getY() < 0 || ball.getY() + Ball.SIZE > SCREEN_HEIGHT) {
+      ball.bounceY();
+    }
+
     repaint();
     GameUtilities.sleep(GAME_LOOP_INTERVAL);
   }
