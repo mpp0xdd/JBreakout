@@ -3,21 +3,25 @@ import java.awt.Graphics;
 
 
 public class Ball {
-  public static final int SIZE = 10;
-
   private Color color;
+  private int size;
   private int x;
   private int y;
   private int vx;
   private int vy;
   private boolean visible = false;
 
-  public Ball(Color color, int x, int y, int vx, int vy) {
+  public Ball(Color color, int size, int x, int y, int vx, int vy) {
     this.color = color;
+    this.size = size;
     this.x = x;
     this.y = y;
     this.vx = vx;
     this.vy = vy;
+  }
+
+  public int getSize() {
+    return size;
   }
 
   public int getX() {
@@ -41,7 +45,7 @@ public class Ball {
       return;
     }
     g.setColor(color);
-    g.fillOval(x, y, SIZE, SIZE);
+    g.fillOval(x, y, size, size);
   }
 
   public void bounceX() {

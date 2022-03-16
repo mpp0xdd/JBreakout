@@ -35,7 +35,8 @@ public class MainScreen extends GameScreen {
   private static final int     BRICKS_MARGIN        =   4;
 
   private static final Color BALL_COLOR   = Color.WHITE;
-  private static final int   BALL_INIT_X  = (int)((SCREEN_WIDTH - Ball.SIZE) * Math.random());
+  private static final int   BALL_SIZE    = 10;
+  private static final int   BALL_INIT_X  = (int)((SCREEN_WIDTH - BALL_SIZE) * Math.random());
   private static final int   BALL_INIT_Y  = BRICKS_Y + NUM_OF_BRICK_ROWS * (BRICK_HEIGHT + BRICKS_MARGIN);
   private static final int   BALL_INIT_VX = (5 + (int)((5 + 1) * Math.random())) * (Math.random() >= 0.5 ? 1 : -1);
   private static final int   BALL_INIT_VY = 5 + (int)((5 + 1) * Math.random());
@@ -55,7 +56,7 @@ public class MainScreen extends GameScreen {
   private Brick[] bricks = Brick.lay(NUM_OF_BRICK_ROWS, NUM_OF_BRICK_COLUMNS,
     COLORS_OF_BRICKS, BRICK_WIDTH, BRICK_HEIGHT, BRICKS_X, BRICKS_Y, BRICKS_MARGIN);
 
-  private Ball ball = new Ball(BALL_COLOR, BALL_INIT_X, BALL_INIT_Y,
+  private Ball ball = new Ball(BALL_COLOR, BALL_SIZE, BALL_INIT_X, BALL_INIT_Y,
     BALL_INIT_VX, BALL_INIT_VY);
 
   private Paddle paddle = new Paddle(PADDLE_COLOR, PADDLE_WIDTH, PADDLE_HEIGHT,
@@ -122,10 +123,10 @@ public class MainScreen extends GameScreen {
   @Override
   protected void runGameLoop() {
     ball.move();
-    if(ball.getX() < 0 || ball.getX() + Ball.SIZE > SCREEN_WIDTH) {
+    if(ball.getX() < 0 || ball.getX() + ball.getSize() > SCREEN_WIDTH) {
       ball.bounceX();
     }
-    if(ball.getY() < 0 || ball.getY() + Ball.SIZE > SCREEN_HEIGHT) {
+    if(ball.getY() < 0 || ball.getY() + ball.getSize() > SCREEN_HEIGHT) {
       ball.bounceY();
     }
 
