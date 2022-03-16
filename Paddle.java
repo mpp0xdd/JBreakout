@@ -27,6 +27,10 @@ public class Paddle {
   }
 
   public Ball rebound(Ball ball) {
+    if(!ball.isVisible()) {
+      return null;
+    }
+
     Rectangle thisRect = new Rectangle(x, y, WIDTH, HEIGHT);
     Rectangle ballRect = new Rectangle(ball.getX(), ball.getY(), Ball.SIZE, Ball.SIZE);
 

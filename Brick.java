@@ -52,7 +52,7 @@ public class Brick {
   }
 
   public Ball rebound(Ball ball) {
-    if(eliminated) {
+    if(eliminated || !ball.isVisible()) {
       return null;
     }
 

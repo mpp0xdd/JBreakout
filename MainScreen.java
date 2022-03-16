@@ -7,13 +7,16 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
+import java.util.TimerTask;
+import java.util.Timer;
 
 
 public class MainScreen extends GameScreen {
   private static final int SCREEN_WIDTH  = 480;
   private static final int SCREEN_HEIGHT = 640;
 
-  private static final long GAME_LOOP_INTERVAL = 16;
+  private static final long GAME_START_INTERVAL = 3000;
+  private static final long GAME_LOOP_INTERVAL  = 16;
 
   private static final int   CURRENT_ROUND_DRAWING_AREA_X = 10;
   private static final int   CURRENT_ROUND_DRAWING_AREA_Y =  0;
@@ -67,6 +70,24 @@ public class MainScreen extends GameScreen {
           }
         }
       }
+    );
+  }
+
+  public void activateGameStartTimer() {
+    if(ball.isVisible()) {
+      throw (new IllegalStateException("既に開始されているゲームのゲーム開始タイマを起動することはできません。"));
+    }
+
+    Timer gameStartTimer = new Timer();
+    gameStartTimer.schedule(
+      new TimerTask() {
+        @Override
+        public void run() {
+          ball.setVisible(true);
+          gameStartTimer.cancel();
+        }
+      },
+      GAME_START_INTERVAL
     );
   }
 

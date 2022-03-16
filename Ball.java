@@ -10,6 +10,7 @@ public class Ball {
   private int y;
   private int vx;
   private int vy;
+  private boolean visible = false;
 
   public Ball(Color color, int x, int y, int vx, int vy) {
     this.color = color;
@@ -27,25 +28,48 @@ public class Ball {
     return y;
   }
 
+  public boolean isVisible() {
+    return visible;
+  }
+
+  public void setVisible(boolean visible) {
+    this.visible = visible;
+  }
+
   public void draw(Graphics g) {
+    if(!visible) {
+      return;
+    }
     g.setColor(color);
     g.fillOval(x, y, SIZE, SIZE);
   }
 
   public void bounceX() {
+    if(!visible) {
+      return;
+    }
     vx = -vx;
   }
 
   public void bounceY() {
+    if(!visible) {
+      return;
+    }
     vy = -vy;
   }
 
   public void bounce() {
+    if(!visible) {
+      return;
+    }
     bounceX();
     bounceY();
   }
 
   public void move() {
+    if(!visible) {
+      return;
+    }
     x += vx;
     y += vy;
   }
