@@ -103,6 +103,8 @@ public class MainScreen extends GameScreen {
       ball.bounceY();
     }
 
+    paddle.rebound(ball);
+
     repaint();
     GameUtilities.sleep(GAME_LOOP_INTERVAL);
   }
