@@ -80,8 +80,7 @@ public class Brick {
       return ball;
     }
 
-    if(thisRect.contains(topLineOfBall.getP1()) || thisRect.contains(topLineOfBall.getP2()) ||
-       thisRect.contains(bottomLineOfBall.getP1()) || thisRect.contains(bottomLineOfBall.getP2())) {
+    if(thisRect.intersectsLine(topLineOfBall) || thisRect.intersectsLine(bottomLineOfBall)) {
       ball.bounce();
       return ball;
     }
