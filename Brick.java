@@ -1,5 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Rectangle;
+import java.awt.geom.Line2D;
 
 
 public class Brick {
@@ -28,6 +30,7 @@ public class Brick {
   public final Color color;
   public final int x;
   public final int y;
+  private boolean eliminated = false;
 
   public Brick(Color color, int x, int y) {
     this.color = color;
@@ -35,8 +38,54 @@ public class Brick {
     this.y = y;
   }
 
+  public void eliminate() {
+    eliminated = true;
+  }
+
   public void draw(Graphics g) {
+    if(eliminated) {
+      return;
+    }
+
     g.setColor(color);
     g.fillRect(x, y, WIDTH, HEIGHT);
+  }
+
+  public Ball rebound(Ball ball) {
+    if(eliminated) {
+      return null;
+    }
+
+    Rectangle thisRect = new Rectangle(x, y, WIDTH, HEIGHT);
+
+    Line2D.Double topLineOfBall = new Line2D.Double(ball.getX(), ball.getY(),
+      ball.getX() + Ball.SIZE, ball.getY());
+
+    Line2D.Double bottomLineOfBall = new Line2D.Double(ball.getX(), ball.getY() + Ball.SIZE,
+      ball.getX() + Ball.SIZE, ball.getY() + Ball.SIZE);
+
+    Line2D.Double leftLineOfBall = new Line2D.Double(ball.getX(), ball.getY(),
+      ball.getX(), ball.getY() + Ball.SIZE);
+
+    Line2D.Double rightLineOfBall = new Line2D.Double(ball.getX() + Ball.SIZE, ball.getY(),
+      ball.getX() + Ball.SIZE, ball.getY() + Ball.SIZE);
+
+    if(thisRect.intersectsLine(topLineOfBall) && thisRect.intersectsLine(bottomLineOfBall)) {
+      ball.bounceX();
+      return ball;
+    }
+
+    if(thisRect.intersectsLine(leftLineOfBall) && thisRect.intersectsLine(rightLineOfBall)) {
+      ball.bounceY();
+      return ball;
+    }
+
+    if(thisRect.contains(topLineOfBall.getP1()) || thisRect.contains(topLineOfBall.getP2()) ||
+       thisRect.contains(bottomLineOfBall.getP1()) || thisRect.contains(bottomLineOfBall.getP2())) {
+      ball.bounce();
+      return ball;
+    }
+
+    return null;
   }
 }

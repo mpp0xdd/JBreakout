@@ -105,6 +105,13 @@ public class MainScreen extends GameScreen {
 
     paddle.rebound(ball);
 
+    for(Brick brick : bricks) {
+      if(brick.rebound(ball) == ball) {
+        brick.eliminate();
+        break;
+      }
+    }
+
     repaint();
     GameUtilities.sleep(GAME_LOOP_INTERVAL);
   }
