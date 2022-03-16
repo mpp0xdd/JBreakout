@@ -5,6 +5,8 @@ import static java.awt.Color.GREEN;
 import static java.awt.Color.YELLOW;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class MainScreen extends GameScreen {
@@ -53,6 +55,19 @@ public class MainScreen extends GameScreen {
 
   public MainScreen() {
     super(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+    addMouseMotionListener(
+      new MouseMotionAdapter() {
+        @Override
+        public void mouseMoved(MouseEvent e) {
+          int x = e.getX();
+          int halfWidthOfPaddle = Paddle.WIDTH / 2;
+          if(halfWidthOfPaddle <= x && x <= SCREEN_WIDTH - halfWidthOfPaddle) {
+            paddle.setX(x - halfWidthOfPaddle);
+          }
+        }
+      }
+    );
   }
 
   @Override

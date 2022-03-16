@@ -16,6 +16,10 @@ public class Paddle {
     this.y = y;
   }
 
+  public void setX(int x) {
+    this.x = x;
+  }
+
   public void draw(Graphics g) {
     g.setColor(color);
     g.fillRect(x, y, WIDTH, HEIGHT);
