@@ -9,6 +9,7 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
 import java.util.TimerTask;
 import java.util.Timer;
+import java.util.function.ToIntFunction;
 
 
 public class MainScreen extends GameScreen {
@@ -33,6 +34,20 @@ public class MainScreen extends GameScreen {
   private static final int     BRICKS_X             =   4;
   private static final int     BRICKS_Y             = 100;
   private static final int     BRICKS_MARGIN        =   4;
+  private static final ToIntFunction<Brick> brickPoints = brick -> {
+    Color brickColor = brick.getColor();
+    if(brickColor == YELLOW) {
+      return 1;
+    } else if(brickColor == GREEN) {
+      return 3;
+    } else if(brickColor == ORANGE) {
+      return 5;
+    } else if(brickColor == RED) {
+      return 7;
+    } else {
+      return 1;
+    }
+  };
 
   private static final Color BALL_COLOR   = Color.WHITE;
   private static final int   BALL_SIZE    = 10;
@@ -135,7 +150,7 @@ public class MainScreen extends GameScreen {
     for(Brick brick : bricks) {
       if(brick.rebound(ball) == ball) {
         brick.eliminate();
-        currentScore++;
+        currentScore += brickPoints.applyAsInt(brick);
         break;
       }
     }

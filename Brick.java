@@ -40,6 +40,10 @@ public class Brick {
     this.y = y;
   }
 
+  public Color getColor() {
+    return color;
+  }
+
   public int getWidth() {
     return width;
   }
