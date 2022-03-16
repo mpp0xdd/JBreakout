@@ -28,18 +28,22 @@ public class MainScreen extends GameScreen {
   private static final int     NUM_OF_BRICK_ROWS    =   8;
   private static final int     NUM_OF_BRICK_COLUMNS =  14;
   private static final Color[] COLORS_OF_BRICKS     = {RED, RED, ORANGE, ORANGE, GREEN, GREEN, YELLOW, YELLOW};
+  public static final int      BRICK_WIDTH          =  30;
+  public static final int      BRICK_HEIGHT         =  10;
   private static final int     BRICKS_X             =   4;
   private static final int     BRICKS_Y             = 100;
   private static final int     BRICKS_MARGIN        =   4;
 
   private static final Color BALL_COLOR   = Color.WHITE;
   private static final int   BALL_INIT_X  = (int)((SCREEN_WIDTH - Ball.SIZE) * Math.random());
-  private static final int   BALL_INIT_Y  = BRICKS_Y + NUM_OF_BRICK_ROWS * (Brick.HEIGHT + BRICKS_MARGIN);
+  private static final int   BALL_INIT_Y  = BRICKS_Y + NUM_OF_BRICK_ROWS * (BRICK_HEIGHT + BRICKS_MARGIN);
   private static final int   BALL_INIT_VX = (5 + (int)((5 + 1) * Math.random())) * (Math.random() >= 0.5 ? 1 : -1);
   private static final int   BALL_INIT_VY = 5 + (int)((5 + 1) * Math.random());
 
   private static final Color PADDLE_COLOR  = Color.BLUE;
-  private static final int   PADDLE_INIT_X = SCREEN_WIDTH / 2 - Paddle.WIDTH / 2;
+  public static final int    PADDLE_WIDTH  = 60;
+  public static final int    PADDLE_HEIGHT = 10;
+  private static final int   PADDLE_INIT_X = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2;
   private static final int   PADDLE_INIT_Y = 600;
 
 
@@ -49,12 +53,13 @@ public class MainScreen extends GameScreen {
   private int currentTotalScore = 0;
 
   private Brick[] bricks = Brick.lay(NUM_OF_BRICK_ROWS, NUM_OF_BRICK_COLUMNS,
-    COLORS_OF_BRICKS, BRICKS_X, BRICKS_Y, BRICKS_MARGIN);
+    COLORS_OF_BRICKS, BRICK_WIDTH, BRICK_HEIGHT, BRICKS_X, BRICKS_Y, BRICKS_MARGIN);
 
   private Ball ball = new Ball(BALL_COLOR, BALL_INIT_X, BALL_INIT_Y,
     BALL_INIT_VX, BALL_INIT_VY);
 
-  private Paddle paddle = new Paddle(PADDLE_COLOR, PADDLE_INIT_X, PADDLE_INIT_Y);
+  private Paddle paddle = new Paddle(PADDLE_COLOR, PADDLE_WIDTH, PADDLE_HEIGHT,
+    PADDLE_INIT_X, PADDLE_INIT_Y);
 
   public MainScreen() {
     super(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -64,7 +69,7 @@ public class MainScreen extends GameScreen {
         @Override
         public void mouseMoved(MouseEvent e) {
           int x = e.getX();
-          int halfWidthOfPaddle = Paddle.WIDTH / 2;
+          int halfWidthOfPaddle = paddle.getWidth() / 2;
           if(halfWidthOfPaddle <= x && x <= SCREEN_WIDTH - halfWidthOfPaddle) {
             paddle.setX(x - halfWidthOfPaddle);
           }

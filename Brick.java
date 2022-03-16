@@ -5,37 +5,43 @@ import java.awt.geom.Line2D;
 
 
 public class Brick {
-  public static final int WIDTH  = 30;
-  public static final int HEIGHT = 10;
 
-  public static Brick[] lay(int rows, int columns, Color[] colors, int x, int y, int margin) {
+  public static Brick[] lay(int rows, int columns, Color[] colors, int width, int height, int x, int y, int margin) {
     if(colors.length != rows) {
       throw (new IllegalArgumentException("レンガの色情報が正しくありません"));
     }
 
     Brick[] result = new Brick[rows * columns];
     for(int i = 0; i < rows; i++) {
-      int brickY = i * HEIGHT + y;
+      int brickY = i * height + y;
       brickY += i * margin;
       for(int j = 0; j < columns; j++) {
-        int brickX = j * WIDTH + x;
+        int brickX = j * width + x;
         brickX += j * margin;
-        result[i * columns + j] = new Brick(colors[i], brickX, brickY);
+        result[i * columns + j] = new Brick(colors[i], width, height, brickX, brickY);
       }
     }
 
     return result;
   }
 
-  public final Color color;
-  public final int x;
-  public final int y;
-  private boolean eliminated = false;
+  protected Color color;
+  protected int width;
+  protected int height;
+  protected int x;
+  protected int y;
+  protected boolean eliminated = false;
 
-  public Brick(Color color, int x, int y) {
+  public Brick(Color color, int width, int height, int x, int y) {
     this.color = color;
+    this.width = width;
+    this.height = height;
     this.x = x;
     this.y = y;
+  }
+
+  public int getWidth() {
+    return width;
   }
 
   public void eliminate() {
@@ -48,7 +54,7 @@ public class Brick {
     }
 
     g.setColor(color);
-    g.fillRect(x, y, WIDTH, HEIGHT);
+    g.fillRect(x, y, width, height);
   }
 
   public Ball rebound(Ball ball) {
@@ -56,7 +62,7 @@ public class Brick {
       return null;
     }
 
-    Rectangle thisRect = new Rectangle(x, y, WIDTH, HEIGHT);
+    Rectangle thisRect = new Rectangle(x, y, width, height);
 
     Line2D.Double topLineOfBall = new Line2D.Double(ball.getX(), ball.getY(),
       ball.getX() + Ball.SIZE, ball.getY());
