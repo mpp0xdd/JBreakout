@@ -135,6 +135,7 @@ public class MainScreen extends GameScreen {
     for(Brick brick : bricks) {
       if(brick.rebound(ball) == ball) {
         brick.eliminate();
+        currentScore++;
         break;
       }
     }
