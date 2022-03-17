@@ -61,31 +61,19 @@ public class Ball {
   }
 
   public void bounceX() {
-    if(!visible) {
-      return;
-    }
     vx = -vx;
   }
 
   public void bounceY() {
-    if(!visible) {
-      return;
-    }
     vy = -vy;
   }
 
   public void bounce() {
-    if(!visible) {
-      return;
-    }
     bounceX();
     bounceY();
   }
 
   public void move() {
-    if(!visible) {
-      return;
-    }
     x += vx;
     y += vy;
   }
