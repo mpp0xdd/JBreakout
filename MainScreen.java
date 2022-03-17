@@ -146,11 +146,17 @@ public class MainScreen extends GameScreen {
     }
 
     ball.move();
-    if(ball.getX() < 0 || ball.getX() + ball.getSize() > SCREEN_WIDTH) {
+    if(ball.getX() < 0) {
       ball.bounceX();
+      ball.setX(0);
+    }
+    if(ball.getX() + ball.getSize() > SCREEN_WIDTH) {
+      ball.bounceX();
+      ball.setX(SCREEN_WIDTH - ball.getSize());
     }
     if(ball.getY() < 0) {
       ball.bounceY();
+      ball.setY(0);
     }
     // ボールをパドルで取りそこなったとき
     if(ball.getY() > SCREEN_HEIGHT) {
