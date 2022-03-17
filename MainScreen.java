@@ -21,6 +21,7 @@ public class MainScreen extends GameScreen {
   private static final long GAME_LOOP_INTERVAL  = 16;
 
   private static final int PLAYER_MAX_TURNS = 3;
+  private static final int GAME_ROUNDS      = 2;
 
   private static final int   CURRENT_ROUND_DRAWING_AREA_X = 10;
   private static final int   CURRENT_ROUND_DRAWING_AREA_Y =  0;
@@ -65,11 +66,11 @@ public class MainScreen extends GameScreen {
   private static final int   PADDLE_INIT_X = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2;
   private static final int   PADDLE_INIT_Y = 600;
 
-
-  private int currentRound      = 1;
-  private int currentScore      = 0;
-  private int currentTurn       = 1;
-  private int currentTotalScore = 0;
+  private int currentNumOfBricksEliminated = 0;
+  private int currentRound                 = 1;
+  private int currentScore                 = 0;
+  private int currentTurn                  = 1;
+  private int currentTotalScore            = 0;
 
   private Brick[] bricks = Brick.lay(NUM_OF_BRICK_ROWS, NUM_OF_BRICK_COLUMNS,
     COLORS_OF_BRICKS, BRICK_WIDTH, BRICK_HEIGHT, BRICKS_X, BRICKS_Y, BRICKS_MARGIN);
@@ -162,11 +163,26 @@ public class MainScreen extends GameScreen {
     paddle.rebound(ball);
 
     for(Brick brick : bricks) {
-      if(brick.rebound(ball) == ball) {
-        brick.eliminate();
-        currentScore += BRICK_TO_SCORE.applyAsInt(brick);
-        break;
+      if(brick.rebound(ball) != ball) {
+        continue;
       }
+
+      currentScore += BRICK_TO_SCORE.applyAsInt(brick);
+      brick.eliminate();
+      currentNumOfBricksEliminated++;
+      if(currentNumOfBricksEliminated == bricks.length) {
+        currentTotalScore += currentScore;
+        if(currentRound == GAME_ROUNDS) {
+          stopGameLoop();
+        } else {
+          currentRound++;
+          activateBallRelocationTimer();
+          Brick.repair(bricks);
+          currentScore = 0;
+          currentNumOfBricksEliminated = 0;
+        }
+      }
+      break;
     }
 
     repaint();

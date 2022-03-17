@@ -25,6 +25,12 @@ public class Brick {
     return result;
   }
 
+  public static void repair(Brick[] bricks) {
+    for(Brick brick : bricks) {
+      brick.eliminated = false;
+    }
+  }
+
   protected Color color;
   protected int width;
   protected int height;
