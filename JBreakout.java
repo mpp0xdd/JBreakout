@@ -7,7 +7,7 @@ public class JBreakout {
     gameWindow.setResizable(false);
     gameWindow.setVisible(true);
     mainScreen.startGameLoop();
-    mainScreen.activateGameStartTimer();
+    mainScreen.activateBallRelocationTimer();
 
     mainScreen.joinGameLoop();
     System.err.println("ゲームセット！");

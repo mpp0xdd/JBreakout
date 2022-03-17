@@ -20,6 +20,10 @@ public class Ball {
     this.vy = vy;
   }
 
+  public Ball(Color color, int size, int vx, int vy) {
+    this(color, size, 0, 0, vx, vy);
+  }
+
   public int getSize() {
     return size;
   }

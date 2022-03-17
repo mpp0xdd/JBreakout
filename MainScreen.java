@@ -74,8 +74,7 @@ public class MainScreen extends GameScreen {
   private Brick[] bricks = Brick.lay(NUM_OF_BRICK_ROWS, NUM_OF_BRICK_COLUMNS,
     COLORS_OF_BRICKS, BRICK_WIDTH, BRICK_HEIGHT, BRICKS_X, BRICKS_Y, BRICKS_MARGIN);
 
-  private Ball ball = new Ball(BALL_COLOR, BALL_SIZE, RANDOM_BALL_X.getAsInt(), BALL_INIT_Y,
-    BALL_INIT_VX, BALL_INIT_VY);
+  private Ball ball = new Ball(BALL_COLOR, BALL_SIZE, BALL_INIT_VX, BALL_INIT_VY);
 
   private Paddle paddle = new Paddle(PADDLE_COLOR, PADDLE_WIDTH, PADDLE_HEIGHT,
     PADDLE_INIT_X, PADDLE_INIT_Y);
@@ -97,18 +96,18 @@ public class MainScreen extends GameScreen {
     );
   }
 
-  public void activateGameStartTimer() {
-    if(ball.isVisible()) {
-      throw (new IllegalStateException("既に開始されているゲームのゲーム開始タイマを起動することはできません。"));
-    }
+  public void activateBallRelocationTimer() {
+    ball.setVisible(false);
+    ball.setX(RANDOM_BALL_X.getAsInt());
+    ball.setY(BALL_INIT_Y);
 
-    Timer gameStartTimer = new Timer();
-    gameStartTimer.schedule(
+    Timer ballRelocationTimer = new Timer();
+    ballRelocationTimer.schedule(
       new TimerTask() {
         @Override
         public void run() {
           ball.setVisible(true);
-          gameStartTimer.cancel();
+          ballRelocationTimer.cancel();
         }
       },
       GAME_START_INTERVAL
@@ -154,9 +153,7 @@ public class MainScreen extends GameScreen {
         stopGameLoop();
       } else {
         currentTurn++;
-        ball.setX(RANDOM_BALL_X.getAsInt());
-        ball.setY(BALL_INIT_Y);
-        activateGameStartTimer();
+        activateBallRelocationTimer();
       }
       repaint();
       return;
