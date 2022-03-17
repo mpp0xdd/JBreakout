@@ -8,5 +8,8 @@ public class JBreakout {
     gameWindow.setVisible(true);
     mainScreen.startGameLoop();
     mainScreen.activateGameStartTimer();
+
+    mainScreen.joinGameLoop();
+    System.err.println("ゲームセット！");
   }
 }
