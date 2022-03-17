@@ -37,7 +37,7 @@ public class MainScreen extends GameScreen {
   private static final int     BRICKS_X             =   4;
   private static final int     BRICKS_Y             = 100;
   private static final int     BRICKS_MARGIN        =   4;
-  private static final ToIntFunction<Brick> brickColorToPoint = brick -> {
+  private static final ToIntFunction<Brick> BRICK_TO_SCORE = brick -> {
     Color brickColor = brick.getColor();
     if(brickColor == YELLOW) {
       return 1;
@@ -167,7 +167,7 @@ public class MainScreen extends GameScreen {
     for(Brick brick : bricks) {
       if(brick.rebound(ball) == ball) {
         brick.eliminate();
-        currentScore += brickColorToPoint.applyAsInt(brick);
+        currentScore += BRICK_TO_SCORE.applyAsInt(brick);
         break;
       }
     }
