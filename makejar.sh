@@ -2,6 +2,7 @@
 JGLib="../JGLib"
 Main="JBreakout"
 
-javac -encoding UTF-8 -cp "$JGLib:." *.java
-cp "$JGLib"/Game*.class .
-jar cvfe "$Main.jar" "$Main" *.class
+rm -f "$JGLib"/*.class
+javac -encoding UTF-8 -cp "${JGLib}:." *.java
+cp "$JGLib"/*.class .
+jar cvfe "${Main}.jar" "$Main" *.class
