@@ -17,8 +17,8 @@ public class MainScreen extends GameScreen {
   private static final int SCREEN_WIDTH  = 480;
   private static final int SCREEN_HEIGHT = 640;
 
-  private static final long GAME_START_INTERVAL = 3000;
-  private static final long GAME_LOOP_INTERVAL  = 16;
+  private static final long GAME_LOOP_INTERVAL       =   16;
+  private static final long BALL_RELOCATION_INTERVAL = 3000;
 
   private static final int PLAYER_MAX_TURNS = 3;
   private static final int GAME_ROUNDS      = 2;
@@ -114,7 +114,7 @@ public class MainScreen extends GameScreen {
           ballRelocationTimer.cancel();
         }
       },
-      GAME_START_INTERVAL
+      BALL_RELOCATION_INTERVAL
     );
   }
 
