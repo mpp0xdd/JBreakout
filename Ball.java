@@ -5,30 +5,42 @@ import java.awt.Graphics;
 public class Ball {
   private Color color;
   private int size;
-  private int x;
-  private int y;
+  private int a;
   private int vx;
   private int vy;
-  private int a;
+  private int x;
+  private int y;
   private boolean isAccelerating = false;
   private boolean visible = false;
 
-  public Ball(Color color, int size, int x, int y, int vx, int vy, int a) {
+  public Ball(Color color, int size, int a, int vx, int vy, int x, int y) {
     this.color = color;
     this.size = size;
-    this.x = x;
-    this.y = y;
+    this.a = a;
     this.vx = vx;
     this.vy = vy;
-    this.a = a;
+    this.x = x;
+    this.y = y;
   }
 
-  public Ball(Color color, int size, int vx, int vy, int a) {
-    this(color, size, 0, 0, vx, vy, a);
+  public Ball(Color color, int size, int a) {
+    this(color, size, a, 0, 0, 0, 0);
   }
 
   public int getSize() {
     return size;
+  }
+
+  public void accelerate() {
+    isAccelerating = true;
+  }
+
+  public void setVX(int vx) {
+    this.vx = vx;
+  }
+
+  public void setVY(int vy) {
+    this.vy = vy;
   }
 
   public int getX() {
@@ -53,10 +65,6 @@ public class Ball {
 
   public void setVisible(boolean visible) {
     this.visible = visible;
-  }
-
-  public void accelerate() {
-    isAccelerating = true;
   }
 
   public void draw(Graphics g) {
