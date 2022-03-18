@@ -11,4 +11,14 @@ public class Paddle extends Brick {
   public void setX(int x) {
     this.x = x;
   }
+
+  @Override
+  public Ball rebound(Ball ball) {
+    if(super.rebound(ball) == ball) {
+      ball.accelerate();
+      return ball;
+    }
+
+    return null;
+  }
 }

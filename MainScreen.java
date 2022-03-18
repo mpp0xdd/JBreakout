@@ -53,12 +53,13 @@ public class MainScreen extends GameScreen {
     }
   };
 
-  private static final Color BALL_COLOR   = Color.WHITE;
-  private static final int   BALL_SIZE    = 10;
+  private static final Color BALL_COLOR          = Color.WHITE;
+  private static final int   BALL_SIZE           = 10;
   private static final IntSupplier RANDOM_BALL_X = () -> (int)((SCREEN_WIDTH - BALL_SIZE) * Math.random());
-  private static final int   BALL_INIT_Y  = BRICKS_Y + NUM_OF_BRICK_ROWS * (BRICK_HEIGHT + BRICKS_MARGIN);
-  private static final int   BALL_INIT_VX = (5 + (int)((5 + 1) * Math.random())) * (Math.random() >= 0.5 ? 1 : -1);
-  private static final int   BALL_INIT_VY = 5 + (int)((5 + 1) * Math.random());
+  private static final int   BALL_INIT_Y         = BRICKS_Y + NUM_OF_BRICK_ROWS * (BRICK_HEIGHT + BRICKS_MARGIN);
+  private static final int   BALL_INIT_VX        = (5 + (int)((5 + 1) * Math.random())) * (Math.random() >= 0.5 ? 1 : -1);
+  private static final int   BALL_INIT_VY        = 5 + (int)((5 + 1) * Math.random());
+  private static final int BALL_ACCELERATION     = 8;
 
   private static final Color PADDLE_COLOR  = Color.BLUE;
   public static final int    PADDLE_WIDTH  = 60;
@@ -75,7 +76,7 @@ public class MainScreen extends GameScreen {
   private Brick[] bricks = Brick.lay(NUM_OF_BRICK_ROWS, NUM_OF_BRICK_COLUMNS,
     COLORS_OF_BRICKS, BRICK_WIDTH, BRICK_HEIGHT, BRICKS_X, BRICKS_Y, BRICKS_MARGIN);
 
-  private Ball ball = new Ball(BALL_COLOR, BALL_SIZE, BALL_INIT_VX, BALL_INIT_VY);
+  private Ball ball = new Ball(BALL_COLOR, BALL_SIZE, BALL_INIT_VX, BALL_INIT_VY, BALL_ACCELERATION);
 
   private Paddle paddle = new Paddle(PADDLE_COLOR, PADDLE_WIDTH, PADDLE_HEIGHT,
     PADDLE_INIT_X, PADDLE_INIT_Y);
