@@ -65,7 +65,7 @@ public class MainScreen extends GameScreen {
   public static final int    PADDLE_WIDTH  = 60;
   public static final int    PADDLE_HEIGHT = 10;
   private static final int   PADDLE_INIT_X = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2;
-  private static final int   PADDLE_INIT_Y = 600;
+  private static final int   PADDLE_INIT_Y = 580;
 
   private int currentNumOfBricksEliminated = 0;
   private int currentRound                 = 1;
