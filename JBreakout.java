@@ -9,8 +9,5 @@ public class JBreakout {
     gameWindow.setVisible(true);
     mainScreen.startGameLoop();
     mainScreen.activateBallRelocationTimer();
-
-    mainScreen.joinGameLoop();
-    System.err.println("ゲームセット！");
   }
 }

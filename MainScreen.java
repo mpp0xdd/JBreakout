@@ -67,6 +67,7 @@ public class MainScreen extends GameScreen {
   private static final int   PADDLE_INIT_X = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2;
   private static final int   PADDLE_INIT_Y = 580;
 
+  private boolean isGameOver = false;
   private int currentNumOfBricksEliminated = 0;
   private int currentRound                 = 1;
   private int currentScore                 = 0;
@@ -139,6 +140,12 @@ public class MainScreen extends GameScreen {
     ball.draw(g);
 
     paddle.draw(g);
+
+    if(isGameOver) {
+      g.setColor(COLOR_OF_DRAWING_STRING);
+      g.setFont(FONT_OF_DRAWING_STRING);
+      GameUtilities.drawStringAfterCentering(g, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, "Game Over!");
+    }
   }
 
   @Override
@@ -166,6 +173,7 @@ public class MainScreen extends GameScreen {
       ball.setVisible(false);
       if(currentTurn == PLAYER_MAX_TURNS) {
         stopGameLoop();
+        isGameOver = true;
       } else {
         currentTurn++;
         activateBallRelocationTimer();
@@ -188,6 +196,7 @@ public class MainScreen extends GameScreen {
         currentTotalScore += currentScore;
         if(currentRound == GAME_ROUNDS) {
           stopGameLoop();
+          isGameOver = true;
         } else {
           currentRound++;
           activateBallRelocationTimer();
