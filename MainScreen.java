@@ -30,15 +30,15 @@ public class MainScreen extends GameScreen {
   private static final Color COLOR_OF_DRAWING_STRING      = Color.WHITE;
   private static final Font  FONT_OF_DRAWING_STRING       = new Font(Font.SANS_SERIF, Font.BOLD, 43);
 
-  private static final int     NUM_OF_BRICK_ROWS    =   8;
-  private static final int     NUM_OF_BRICK_COLUMNS =  14;
-  private static final Color[] COLORS_OF_BRICKS     = {RED, RED, ORANGE, ORANGE, GREEN, GREEN, YELLOW, YELLOW};
-  public static final int      BRICK_WIDTH          =  30;
-  public static final int      BRICK_HEIGHT         =  10;
-  private static final int     BRICKS_X             =   4;
-  private static final int     BRICKS_Y             = 100;
-  private static final int     BRICKS_MARGIN        =   4;
-  private static final ToIntFunction<Brick> BRICK_TO_SCORE = brick -> {
+  private static final int                  NUM_OF_BRICK_ROWS     =   8;
+  private static final int                  NUM_OF_BRICK_COLUMNS  =  14;
+  private static final Color[]              COLORS_OF_BRICKS      = {RED, RED, ORANGE, ORANGE, GREEN, GREEN, YELLOW, YELLOW};
+  public static final int                   BRICK_WIDTH           =  30;
+  public static final int                   BRICK_HEIGHT          =  10;
+  private static final int                  BRICKS_X              =   4;
+  private static final int                  BRICKS_Y              = 100;
+  private static final int                  BRICKS_MARGIN         =   4;
+  private static final ToIntFunction<Brick> BRICK_TO_SCORE        = brick -> {
     Color brickColor = brick.getColor();
     if(brickColor == YELLOW) {
       return 1;
@@ -67,12 +67,13 @@ public class MainScreen extends GameScreen {
   private static final int   PADDLE_INIT_X = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2;
   private static final int   PADDLE_INIT_Y = 580;
 
-  private boolean isGameOver = false;
-  private int currentNumOfBricksEliminated = 0;
-  private int currentRound                 = 1;
-  private int currentScore                 = 0;
-  private int currentTurn                  = 1;
-  private int currentTotalScore            = 0;
+
+  private boolean isGameOver                   = false;
+  private int     currentNumOfBricksEliminated = 0;
+  private int     currentRound                 = 1;
+  private int     currentScore                 = 0;
+  private int     currentTurn                  = 1;
+  private int     currentTotalScore            = 0;
 
   private Brick[] bricks = Brick.lay(NUM_OF_BRICK_ROWS, NUM_OF_BRICK_COLUMNS,
     COLORS_OF_BRICKS, BRICK_WIDTH, BRICK_HEIGHT, BRICKS_X, BRICKS_Y, BRICKS_MARGIN);
