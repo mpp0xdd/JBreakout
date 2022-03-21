@@ -85,6 +85,7 @@ public class MainScreen extends GameScreen {
 
   public MainScreen() {
     super(SCREEN_WIDTH, SCREEN_HEIGHT);
+    setGameLoopInterval(GAME_LOOP_INTERVAL);
 
     addMouseMotionListener(
       new MouseMotionAdapter() {
@@ -210,6 +211,5 @@ public class MainScreen extends GameScreen {
     }
 
     repaint();
-    GameUtilities.sleep(GAME_LOOP_INTERVAL);
   }
 }
