@@ -40,13 +40,13 @@ public class MainScreen extends GameScreen {
   private static final int                  BRICKS_MARGIN         =   4;
   private static final ToIntFunction<Brick> BRICK_TO_SCORE        = brick -> {
     Color brickColor = brick.getColor();
-    if(brickColor == YELLOW) {
+    if(brickColor.equals(YELLOW)) {
       return 1;
-    } else if(brickColor == GREEN) {
+    } else if(brickColor.equals(GREEN)) {
       return 3;
-    } else if(brickColor == ORANGE) {
+    } else if(brickColor.equals(ORANGE)) {
       return 5;
-    } else if(brickColor == RED) {
+    } else if(brickColor.equals(RED)) {
       return 7;
     } else {
       return 1;
