@@ -1,7 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-
 public class Ball {
   private Color color;
   private int size;
@@ -68,15 +67,15 @@ public class Ball {
   }
 
   public void draw(Graphics g) {
-    if(!visible) {
+    if (!visible) {
       return;
     }
 
     g.setColor(color);
     g.fillOval(x, y, size, size);
 
-    if(isAccelerating) {
-      for(int i = 0; i < a; i++) {
+    if (isAccelerating) {
+      for (int i = 0; i < a; i++) {
         move();
         g.fillOval(x, y, size, size);
       }

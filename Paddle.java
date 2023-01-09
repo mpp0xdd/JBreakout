@@ -1,6 +1,5 @@
 import java.awt.Color;
 
-
 public class Paddle extends Brick {
   public Paddle(Color color, int width, int height, int x, int y) {
     super(color, width, height, x, y);
@@ -12,7 +11,7 @@ public class Paddle extends Brick {
 
   @Override
   public Ball rebound(Ball ball) {
-    if(super.rebound(ball) == ball) {
+    if (super.rebound(ball) == ball) {
       ball.accelerate();
       return ball;
     }
