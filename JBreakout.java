@@ -3,7 +3,7 @@ public class JBreakout {
     GameWindow gameWindow = new JBreakoutWindow();
     MainScreen mainScreen = new MainScreen();
 
-    gameWindow.add(mainScreen);
+    gameWindow.switchGameScreen(mainScreen);
     gameWindow.pack();
 
     gameWindow.setVisible(true);
