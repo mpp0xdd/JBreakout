@@ -16,8 +16,6 @@ $ java -cp ../JGLib:. JBreakout
 
 # 効果音とBGMを鳴らすには
 サウンド・ファイルを用意し，JBreakoutフォルダ直下に配置してください。
-
----
 - ball_bounce.wav
   - ボールがバウンドする時の音
 - ball_fall.wav
@@ -26,11 +24,22 @@ $ java -cp ../JGLib:. JBreakout
   - BGM
 - paddle_rebound.wav
   - パドルがボールを跳ね返す時の音
----
 
 # jarファイルの作成と実行
+## Step1
 ```
 $ chmod u+x makejar.sh
+```
+## Step2
+### サウンド・ファイルがある場合
+```
+$ ./makejar.sh *.wav
+```
+### サウンド・ファイルがない場合
+```
 $ ./makejar.sh
+```
+## Step3
+```
 $ java -jar JBreakout.jar
 ```
