@@ -41,17 +41,32 @@ $ java -cp ../JGLib;. JBreakout
 
 # jarファイルの作成と実行
 ## Step1
+### Linux
 ```
 $ chmod u+x makejar.sh
 ```
+### Windows
+```
+$ REM No Operation
+```
 ## Step2
 ### サウンド・ファイルがある場合
+#### Linux
 ```
 $ ./makejar.sh *.wav
 ```
+#### Windows
+```
+$ ./makejar.bat *.wav
+```
 ### サウンド・ファイルがない場合
+#### Linux
 ```
 $ ./makejar.sh
+```
+#### Windows
+```
+$ ./makejar.bat
 ```
 ## Step3
 ```
