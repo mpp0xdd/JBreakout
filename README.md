@@ -2,16 +2,30 @@
 「JBreakout」はJavaで書かれたBreakout（ブロック崩し）です。
 
 # コンパイル方法
+## Step1
 ```
 $ git clone https://github.com/mpp0xdd/JGLib.git
 $ git clone https://github.com/mpp0xdd/JBreakout.git
 $ cd JBreakout
+```
+## Step2
+### Linux
+```
 $ javac -encoding UTF-8 -cp ../JGLib:. *.java
+```
+### Windows
+```
+$ javac -encoding UTF-8 -cp ../JGLib;. *.java
 ```
 
 # 実行方法
+### Linux
 ```
 $ java -cp ../JGLib:. JBreakout
+```
+### Windows
+```
+$ java -cp ../JGLib;. JBreakout
 ```
 
 # 効果音とBGMを鳴らすには
