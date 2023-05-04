@@ -8,10 +8,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.function.IntSupplier;
 import java.util.function.ToIntFunction;
+import javax.sound.sampled.Clip;
 
 public class MainScreen extends GameScreen {
   private static final int SCREEN_WIDTH = 480;
@@ -74,6 +76,10 @@ public class MainScreen extends GameScreen {
   private static final int PADDLE_INIT_X = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2;
   private static final int PADDLE_INIT_Y = 580;
 
+  private final Optional<Clip> bgmClip =
+      GameUtilities.loadClip(MainScreen.class.getResource("bgm.wav"));
+  private final Optional<Clip> fallClip =
+      GameUtilities.loadClip(MainScreen.class.getResource("ball_fall.wav"));
   private boolean isGameOver = false;
   private int currentNumOfBricksEliminated = 0;
   private int currentRound = 1;
@@ -92,10 +98,10 @@ public class MainScreen extends GameScreen {
           BRICKS_Y,
           BRICKS_MARGIN);
 
-  private Ball ball = new Ball(BALL_COLOR, BALL_SIZE, BALL_ACCELERATION);
+  private Ball ball = new SoundBall(BALL_COLOR, BALL_SIZE, BALL_ACCELERATION);
 
   private Paddle paddle =
-      new Paddle(PADDLE_COLOR, PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_INIT_X, PADDLE_INIT_Y);
+      new SoundPaddle(PADDLE_COLOR, PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_INIT_X, PADDLE_INIT_Y);
 
   public MainScreen() {
     super(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -112,6 +118,10 @@ public class MainScreen extends GameScreen {
             }
           }
         });
+  }
+
+  public void playBGM() {
+    bgmClip.ifPresent(clip -> clip.loop(Clip.LOOP_CONTINUOUSLY));
   }
 
   public void activateBallRelocationTimer() {
@@ -192,6 +202,7 @@ public class MainScreen extends GameScreen {
     }
     // ボールをパドルで取りそこなったとき
     if (ball.getY() > SCREEN_HEIGHT) {
+      fallClip.ifPresent(GameUtilities::playClip);
       ball.setVisible(false);
       if (currentTurn == PLAYER_MAX_TURNS) {
         stopGameLoop();

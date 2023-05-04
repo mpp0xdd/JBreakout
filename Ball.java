@@ -92,8 +92,8 @@ public class Ball {
   }
 
   public void bounce() {
-    bounceX();
-    bounceY();
+    vx = -vx;
+    vy = -vy;
   }
 
   public void move() {
