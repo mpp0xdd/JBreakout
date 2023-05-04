@@ -8,7 +8,29 @@ $ git clone https://github.com/mpp0xdd/JBreakout.git
 $ cd JBreakout
 $ javac -encoding UTF-8 -cp ../JGLib:. *.java
 ```
+
 # 実行方法
 ```
 $ java -cp ../JGLib:. JBreakout
+```
+
+# 効果音とBGMを鳴らすには
+サウンド・ファイルを用意し，JBreakoutフォルダ直下に配置してください。
+
+---
+- ball_bounce.wav
+  - ボールがバウンドする時の音
+- ball_fall.wav
+  - ボールが画面の範囲外に落下した時の音
+- bgm.wav
+  - BGM
+- paddle_rebound.wav
+  - パドルがボールを跳ね返す時の音
+---
+
+# jarファイルの作成と実行
+```
+$ chmod u+x makejar.sh
+$ ./makejar.sh
+$ java -jar JBreakout.jar
 ```
