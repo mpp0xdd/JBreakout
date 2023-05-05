@@ -121,7 +121,7 @@ public class MainScreen extends GameScreen {
   }
 
   public void playBGM() {
-    bgmClip.ifPresent(clip -> clip.loop(Clip.LOOP_CONTINUOUSLY));
+    bgmClip.ifPresent(GameUtilities::repeatClip);
   }
 
   public void activateBallRelocationTimer() {
