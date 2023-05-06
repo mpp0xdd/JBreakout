@@ -5,7 +5,7 @@ import javax.sound.sampled.Clip;
 public class SoundPaddle extends Paddle {
 
   private final Optional<Clip> reboundClip =
-      GameUtilities.loadClip(SoundBall.class.getResource("paddle_rebound.wav"));
+      GameUtilities.loadClip(SoundBall.class.getResource("sounds/paddle_rebound.wav"));
 
   public SoundPaddle(Color color, int width, int height, int x, int y) {
     super(color, width, height, x, y);

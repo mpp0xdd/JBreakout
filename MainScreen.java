@@ -77,9 +77,9 @@ public class MainScreen extends GameScreen {
   private static final int PADDLE_INIT_Y = 580;
 
   private final Optional<Clip> bgmClip =
-      GameUtilities.loadClip(MainScreen.class.getResource("bgm.wav"));
+      GameUtilities.loadClip(MainScreen.class.getResource("sounds/bgm.wav"));
   private final Optional<Clip> fallClip =
-      GameUtilities.loadClip(MainScreen.class.getResource("ball_fall.wav"));
+      GameUtilities.loadClip(MainScreen.class.getResource("sounds/ball_fall.wav"));
   private boolean isGameOver = false;
   private int currentNumOfBricksEliminated = 0;
   private int currentRound = 1;

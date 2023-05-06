@@ -24,7 +24,7 @@ $ java -cp classes JBreakout
 ```
 
 # 効果音とBGMを鳴らすには
-サウンド・ファイルを用意し，classesフォルダ直下に配置してください。
+サウンド・ファイルを用意し，classes/soundsフォルダに配置してください。
 - ball_bounce.wav
   - ボールがバウンドする時の音
 - ball_fall.wav

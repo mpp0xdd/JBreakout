@@ -5,7 +5,7 @@ import javax.sound.sampled.Clip;
 public class SoundBall extends Ball {
 
   private final Optional<Clip> bounceClip =
-      GameUtilities.loadClip(SoundBall.class.getResource("ball_bounce.wav"));
+      GameUtilities.loadClip(SoundBall.class.getResource("sounds/ball_bounce.wav"));
 
   public SoundBall(Color color, int size, int a, int vx, int vy, int x, int y) {
     super(color, size, a, vx, vy, x, y);
