@@ -47,11 +47,11 @@ $ REM No Operation
 ## Step2
 ### Linux
 ```
-$ ./makejar.sh
+$ ./tools/makejar.sh
 ```
 ### Windows
 ```
-$ ./makejar.bat
+$ tools\makejar.bat
 ```
 ## Step3
 ```
