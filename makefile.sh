@@ -1,5 +1,6 @@
 #!/bin/bash
 JGLib="../JGLib"
+Classes="classes"
 Main="JBreakout"
 Formatter="../Lib/google-java-format-1.15.0-all-deps.jar"
 
@@ -22,15 +23,15 @@ format () {
 }
 
 clean () {
-  rm -f "$JGLib"/*.class *.class
+  rm -f "$Classes"/*.class
 }
 
 make () {
-  javac -encoding UTF-8 -cp "${JGLib}:." *.java
+  javac -d "$Classes" -encoding UTF-8 -cp "${JGLib}:." *.java
 }
 
 run () {
-  java -cp ../JGLib:. "$Main"
+  java -cp "$Classes" "$Main"
   exit
 }
 

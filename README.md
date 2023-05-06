@@ -11,25 +11,20 @@ $ cd JBreakout
 ## Step2
 ### Linux
 ```
-$ javac -encoding UTF-8 -cp ../JGLib:. *.java
+$ javac -d classes -encoding UTF-8 -cp ../JGLib:. *.java
 ```
 ### Windows
 ```
-$ javac -encoding UTF-8 -cp ../JGLib;. *.java
+$ javac -d classes -encoding UTF-8 -cp ../JGLib;. *.java
 ```
 
 # 実行方法
-### Linux
 ```
-$ java -cp ../JGLib:. JBreakout
-```
-### Windows
-```
-$ java -cp ../JGLib;. JBreakout
+$ java -cp classes JBreakout
 ```
 
 # 効果音とBGMを鳴らすには
-サウンド・ファイルを用意し，JBreakoutフォルダ直下に配置してください。
+サウンド・ファイルを用意し，classesフォルダ直下に配置してください。
 - ball_bounce.wav
   - ボールがバウンドする時の音
 - ball_fall.wav
@@ -50,21 +45,11 @@ $ chmod u+x makejar.sh
 $ REM No Operation
 ```
 ## Step2
-### サウンド・ファイルがある場合
-#### Linux
-```
-$ ./makejar.sh *.wav
-```
-#### Windows
-```
-$ ./makejar.bat *.wav
-```
-### サウンド・ファイルがない場合
-#### Linux
+### Linux
 ```
 $ ./makejar.sh
 ```
-#### Windows
+### Windows
 ```
 $ ./makejar.bat
 ```

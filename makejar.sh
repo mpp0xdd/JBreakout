@@ -1,8 +1,8 @@
 #!/bin/bash
 JGLib="../JGLib"
+Classes="classes"
 Main="JBreakout"
 
-rm -f "$JGLib"/*.class *.class
-javac -encoding UTF-8 -cp "${JGLib}:." *.java
-cp "$JGLib"/*.class .
-jar cvfe "${Main}.jar" "$Main" *.class $@
+rm -f "$Classes"/*.class
+javac -d "$Classes" -encoding UTF-8 -cp "${JGLib}:." *.java
+jar cvfe "${Main}.jar" "$Main" -C "$Classes" .
