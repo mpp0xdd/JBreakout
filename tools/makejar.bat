@@ -1,9 +1,9 @@
 @echo off
 setlocal
-set JGLib=..\JGLib
-set Classes=classes
-set Main=JBreakout
+set JGLIB=..\JGLib
+set CLASSES=classes
+set MAIN=JBreakout
 
-del "%Classes%\*.class"
-javac -d "%Classes%" -encoding UTF-8 -cp "%JGLib%;." *.java
-jar cvfe "%Main%.jar" "%Main%" -C %Classes% .
+del "%CLASSES%\*.class"
+javac -d "%CLASSES%" -cp "%JGLIB%;." -encoding UTF-8 *.java
+jar cvfe "%MAIN%.jar" "%MAIN%" -C %CLASSES% .

@@ -1,8 +1,9 @@
 #!/bin/bash
-JGLib="../JGLib"
-Classes="classes"
-Main="JBreakout"
+CFLAGS="-J-Dfile.encoding=UTF-8"
+JGLIB="../JGLib"
+CLASSES="classes"
+MAIN="JBreakout"
 
-rm -f "$Classes"/*.class
-javac -d "$Classes" -encoding UTF-8 -cp "${JGLib}:." *.java
-jar cvfe "${Main}.jar" "$Main" -C "$Classes" .
+rm -f "$CLASSES"/*.class
+javac -d "$CLASSES" "$CFLAGS" -cp "${JGLIB}:." *.java
+jar "$CFLAGS" cvfe "${MAIN}.jar" "$MAIN" -C "$CLASSES" .

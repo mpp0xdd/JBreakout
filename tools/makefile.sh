@@ -1,8 +1,10 @@
 #!/bin/bash
-JGLib="../JGLib"
-Classes="classes"
-Main="JBreakout"
-Formatter="../Lib/google-java-format-1.15.0-all-deps.jar"
+CFLAGS="-J-Dfile.encoding=UTF-8"
+JFLAGS="-Dfile.encoding=UTF-8"
+JGLIB="../JGLib"
+CLASSES="classes"
+MAIN="JBreakout"
+FORMATTER="../Lib/google-java-format-1.15.0-all-deps.jar"
 
 usage () {
   cat 1>&2 <<EOF
@@ -19,19 +21,19 @@ EOF
 }
 
 format () {
-  java -jar "$Formatter" -i *.java
+  java "$JFLAGS" -jar "$FORMATTER" -i *.java
 }
 
 clean () {
-  rm -f "$Classes"/*.class
+  rm -f "$CLASSES"/*.class
 }
 
 make () {
-  javac -d "$Classes" -encoding UTF-8 -cp "${JGLib}:." *.java
+  javac -d "$CLASSES" "$CFLAGS" -cp "${JGLIB}:." *.java
 }
 
 run () {
-  java -cp "$Classes" "$Main"
+  java "$JFLAGS" -cp "$CLASSES" "$MAIN"
   exit
 }
 
