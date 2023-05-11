@@ -4,8 +4,6 @@ public class JBreakout {
     MainScreen mainScreen = new MainScreen();
 
     gameWindow.switchGameScreen(mainScreen);
-    gameWindow.pack();
-
     gameWindow.setVisible(true);
     mainScreen.startGameLoop();
     mainScreen.playBGM();
