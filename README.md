@@ -33,6 +33,8 @@ $ java -cp classes JBreakout
   - BGM
 - paddle_rebound.wav
   - パドルがボールを跳ね返す時の音
+- brick_eliminate.wav
+  - ブロックが壊れる時の音
 
 # jarファイルの作成と実行
 ## Step1

@@ -11,14 +11,14 @@ public class Brick {
       throw (new IllegalArgumentException("レンガの色情報が正しくありません"));
     }
 
-    Brick[] result = new Brick[rows * columns];
+    Brick[] result = new SoundBrick[rows * columns];
     for (int i = 0; i < rows; i++) {
       int brickY = i * height + y;
       brickY += i * margin;
       for (int j = 0; j < columns; j++) {
         int brickX = j * width + x;
         brickX += j * margin;
-        result[i * columns + j] = new Brick(colors[i], width, height, brickX, brickY);
+        result[i * columns + j] = new SoundBrick(colors[i], width, height, brickX, brickY);
       }
     }
 
