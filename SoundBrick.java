@@ -4,7 +4,7 @@ import javax.sound.sampled.Clip;
 
 public class SoundBrick extends Brick {
   private final Optional<Clip> eliminateClip =
-      GameUtilities.loadClip(SoundBall.class.getResource("sounds/brick_eliminate.wav"));
+      GameUtilities.loadClip(SoundBrick.class.getResource("sounds/brick_eliminate.wav"));
 
   public SoundBrick(Color color, int width, int height, int x, int y) {
     super(color, width, height, x, y);
