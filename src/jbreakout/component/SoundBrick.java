@@ -1,6 +1,9 @@
+package jbreakout.component;
+
 import java.awt.Color;
 import java.util.Optional;
 import javax.sound.sampled.Clip;
+import jglib.util.GameUtilities;
 
 public class SoundBrick extends Brick {
   private final Optional<Clip> eliminateClip =
@@ -10,6 +13,7 @@ public class SoundBrick extends Brick {
     super(color, width, height, x, y);
   }
 
+  @Override
   public void eliminate() {
     super.eliminate();
     eliminateClip.ifPresent(GameUtilities::playClip);

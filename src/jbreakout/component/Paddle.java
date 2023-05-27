@@ -1,3 +1,5 @@
+package jbreakout.component;
+
 import java.awt.Color;
 
 public class Paddle extends Brick {

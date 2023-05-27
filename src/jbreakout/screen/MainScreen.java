@@ -1,8 +1,9 @@
+package jbreakout.screen;
+
 import static java.awt.Color.GREEN;
 import static java.awt.Color.ORANGE;
 import static java.awt.Color.RED;
 import static java.awt.Color.YELLOW;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -14,6 +15,13 @@ import java.util.TimerTask;
 import java.util.function.IntSupplier;
 import java.util.function.ToIntFunction;
 import javax.sound.sampled.Clip;
+import jbreakout.component.Ball;
+import jbreakout.component.Brick;
+import jbreakout.component.Paddle;
+import jbreakout.component.SoundBall;
+import jbreakout.component.SoundPaddle;
+import jglib.component.GameScreen;
+import jglib.util.GameUtilities;
 
 public class MainScreen extends GameScreen {
   private static final int SCREEN_WIDTH = 480;

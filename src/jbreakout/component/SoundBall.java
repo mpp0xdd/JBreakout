@@ -1,6 +1,9 @@
+package jbreakout.component;
+
 import java.awt.Color;
 import java.util.Optional;
 import javax.sound.sampled.Clip;
+import jglib.util.GameUtilities;
 
 public class SoundBall extends Ball {
 
