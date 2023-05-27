@@ -5,7 +5,7 @@ import jglib.component.GameWindow;
 
 public class JBreakout {
   public static void main(String[] args) {
-    GameWindow gameWindow = new JBreakoutWindow();
+    GameWindow gameWindow = new GameWindow("JBreakout");
     MainScreen mainScreen = new MainScreen();
 
     gameWindow.switchGameScreen(mainScreen);
