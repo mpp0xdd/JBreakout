@@ -3,12 +3,12 @@ package jbreakout.component;
 import java.awt.Color;
 import java.util.Optional;
 import javax.sound.sampled.Clip;
+import jbreakout.common.SoundFactory;
 import jglib.util.GameUtilities;
 
 public class SoundBall extends Ball {
 
-  private final Optional<Clip> bounceClip =
-      GameUtilities.loadClip(SoundBall.class.getResource("sounds/ball_bounce.wav"));
+  private final Optional<Clip> bounceClip = SoundFactory.ballBounceClip();
 
   public SoundBall(Color color, int size, int a, int vx, int vy, int x, int y) {
     super(color, size, a, vx, vy, x, y);

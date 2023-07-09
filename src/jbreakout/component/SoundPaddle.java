@@ -3,12 +3,12 @@ package jbreakout.component;
 import java.awt.Color;
 import java.util.Optional;
 import javax.sound.sampled.Clip;
+import jbreakout.common.SoundFactory;
 import jglib.util.GameUtilities;
 
 public class SoundPaddle extends Paddle {
 
-  private final Optional<Clip> reboundClip =
-      GameUtilities.loadClip(SoundPaddle.class.getResource("sounds/paddle_rebound.wav"));
+  private final Optional<Clip> reboundClip = SoundFactory.paddleReboundClip();
 
   public SoundPaddle(Color color, int width, int height, int x, int y) {
     super(color, width, height, x, y);
