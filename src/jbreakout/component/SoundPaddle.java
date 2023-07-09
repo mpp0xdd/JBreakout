@@ -3,7 +3,7 @@ package jbreakout.component;
 import java.awt.Color;
 import java.util.Optional;
 import javax.sound.sampled.Clip;
-import jbreakout.common.SoundFactory;
+import jbreakout.factories.SoundFactory;
 import jglib.util.GameUtilities;
 
 public class SoundPaddle extends Paddle {

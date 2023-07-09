@@ -15,12 +15,12 @@ import java.util.TimerTask;
 import java.util.function.IntSupplier;
 import java.util.function.ToIntFunction;
 import javax.sound.sampled.Clip;
-import jbreakout.common.SoundFactory;
 import jbreakout.component.Ball;
 import jbreakout.component.Brick;
 import jbreakout.component.Paddle;
 import jbreakout.component.SoundBall;
 import jbreakout.component.SoundPaddle;
+import jbreakout.factories.SoundFactory;
 import jglib.component.GameScreen;
 import jglib.util.GameUtilities;
 
