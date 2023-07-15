@@ -1,4 +1,4 @@
-package jbreakout.factories;
+package jbreakout.resource;
 
 import java.util.Optional;
 import javax.sound.sampled.Clip;

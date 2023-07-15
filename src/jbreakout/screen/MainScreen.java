@@ -20,7 +20,7 @@ import jbreakout.component.Brick;
 import jbreakout.component.Paddle;
 import jbreakout.component.SoundBall;
 import jbreakout.component.SoundPaddle;
-import jbreakout.factories.SoundFactory;
+import jbreakout.resource.SoundFactory;
 import jglib.component.GameScreen;
 import jglib.util.GameUtilities;
 

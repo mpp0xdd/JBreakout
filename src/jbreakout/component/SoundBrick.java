@@ -3,7 +3,7 @@ package jbreakout.component;
 import java.awt.Color;
 import java.util.Optional;
 import javax.sound.sampled.Clip;
-import jbreakout.factories.SoundFactory;
+import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
 
 public class SoundBrick extends Brick {
