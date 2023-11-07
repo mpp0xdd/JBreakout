@@ -1,19 +1,45 @@
 package jbreakout.screen;
 
-import static java.awt.Color.GREEN;
-import static java.awt.Color.ORANGE;
-import static java.awt.Color.RED;
-import static java.awt.Color.YELLOW;
+import static jbreakout.common.Constants.BALL_ACCELERATION;
+import static jbreakout.common.Constants.BALL_COLOR;
+import static jbreakout.common.Constants.BALL_INIT_Y;
+import static jbreakout.common.Constants.BALL_RELOCATION_INTERVAL;
+import static jbreakout.common.Constants.BALL_SIZE;
+import static jbreakout.common.Constants.BRICKS_MARGIN;
+import static jbreakout.common.Constants.BRICKS_X;
+import static jbreakout.common.Constants.BRICKS_Y;
+import static jbreakout.common.Constants.BRICK_HEIGHT;
+import static jbreakout.common.Constants.BRICK_TO_SCORE;
+import static jbreakout.common.Constants.BRICK_WIDTH;
+import static jbreakout.common.Constants.COLORS_OF_BRICKS;
+import static jbreakout.common.Constants.COLOR_OF_DRAWING_STRING;
+import static jbreakout.common.Constants.CURRENT_ROUND_DRAWING_AREA_X;
+import static jbreakout.common.Constants.CURRENT_ROUND_DRAWING_AREA_Y;
+import static jbreakout.common.Constants.CURRENT_TURN_DRAWING_AREA_X;
+import static jbreakout.common.Constants.CURRENT_TURN_DRAWING_AREA_Y;
+import static jbreakout.common.Constants.FONT_OF_DRAWING_STRING;
+import static jbreakout.common.Constants.GAME_LOOP_INTERVAL;
+import static jbreakout.common.Constants.GAME_ROUNDS;
+import static jbreakout.common.Constants.NUM_OF_BRICK_COLUMNS;
+import static jbreakout.common.Constants.NUM_OF_BRICK_ROWS;
+import static jbreakout.common.Constants.PADDLE_COLOR;
+import static jbreakout.common.Constants.PADDLE_HEIGHT;
+import static jbreakout.common.Constants.PADDLE_INIT_X;
+import static jbreakout.common.Constants.PADDLE_INIT_Y;
+import static jbreakout.common.Constants.PADDLE_WIDTH;
+import static jbreakout.common.Constants.PLAYER_MAX_TURNS;
+import static jbreakout.common.Constants.RANDOM_BALL_VX;
+import static jbreakout.common.Constants.RANDOM_BALL_VY;
+import static jbreakout.common.Constants.RANDOM_BALL_X;
+import static jbreakout.common.Constants.SCREEN_HEIGHT;
+import static jbreakout.common.Constants.SCREEN_WIDTH;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.function.IntSupplier;
-import java.util.function.ToIntFunction;
 import javax.sound.sampled.Clip;
 import jbreakout.component.Ball;
 import jbreakout.component.Brick;
@@ -25,65 +51,6 @@ import jglib.component.GameScreen;
 import jglib.util.GameUtilities;
 
 public class MainScreen extends GameScreen {
-  private static final int SCREEN_WIDTH = 480;
-  private static final int SCREEN_HEIGHT = 640;
-
-  private static final long GAME_LOOP_INTERVAL = 16;
-  private static final long BALL_RELOCATION_INTERVAL = 3000;
-
-  private static final int PLAYER_MAX_TURNS = 3;
-  private static final int GAME_ROUNDS = 2;
-
-  private static final int CURRENT_ROUND_DRAWING_AREA_X = 10;
-  private static final int CURRENT_ROUND_DRAWING_AREA_Y = 0;
-  private static final int CURRENT_TURN_DRAWING_AREA_X =
-      SCREEN_WIDTH - CURRENT_ROUND_DRAWING_AREA_X;
-  private static final int CURRENT_TURN_DRAWING_AREA_Y = CURRENT_ROUND_DRAWING_AREA_Y;
-  private static final Color COLOR_OF_DRAWING_STRING = Color.WHITE;
-  private static final Font FONT_OF_DRAWING_STRING = new Font(Font.SANS_SERIF, Font.BOLD, 43);
-
-  private static final int NUM_OF_BRICK_ROWS = 8;
-  private static final int NUM_OF_BRICK_COLUMNS = 14;
-  private static final Color[] COLORS_OF_BRICKS = {
-    RED, RED, ORANGE, ORANGE, GREEN, GREEN, YELLOW, YELLOW
-  };
-  public static final int BRICK_WIDTH = 30;
-  public static final int BRICK_HEIGHT = 10;
-  private static final int BRICKS_X = 4;
-  private static final int BRICKS_Y = 100;
-  private static final int BRICKS_MARGIN = 4;
-  private static final ToIntFunction<Brick> BRICK_TO_SCORE =
-      brick -> {
-        Color brickColor = brick.getColor();
-        if (brickColor.equals(YELLOW)) {
-          return 1;
-        } else if (brickColor.equals(GREEN)) {
-          return 3;
-        } else if (brickColor.equals(ORANGE)) {
-          return 5;
-        } else if (brickColor.equals(RED)) {
-          return 7;
-        } else {
-          return 1;
-        }
-      };
-
-  private static final Color BALL_COLOR = Color.WHITE;
-  private static final int BALL_SIZE = 10;
-  private static final IntSupplier RANDOM_BALL_X =
-      () -> (int) ((SCREEN_WIDTH - BALL_SIZE) * Math.random());
-  private static final int BALL_INIT_Y =
-      BRICKS_Y + NUM_OF_BRICK_ROWS * (BRICK_HEIGHT + BRICKS_MARGIN);
-  private static final IntSupplier RANDOM_BALL_VX =
-      () -> (5 + (int) ((5 + 1) * Math.random())) * (Math.random() >= 0.5 ? 1 : -1);
-  private static final IntSupplier RANDOM_BALL_VY = () -> 5 + (int) ((5 + 1) * Math.random());
-  private static final int BALL_ACCELERATION = 8;
-
-  private static final Color PADDLE_COLOR = Color.BLUE;
-  public static final int PADDLE_WIDTH = 60;
-  public static final int PADDLE_HEIGHT = 10;
-  private static final int PADDLE_INIT_X = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2;
-  private static final int PADDLE_INIT_Y = 580;
 
   private final Optional<Clip> bgmClip = SoundFactory.mainScreenBgmClip();
   private final Optional<Clip> fallClip = SoundFactory.ballFallClip();
