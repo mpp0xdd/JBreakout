@@ -1,10 +1,13 @@
 package jbreakout.common;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public interface Ball {
 
   int size();
+
+  Color color();
 
   void setVX(int vx);
 

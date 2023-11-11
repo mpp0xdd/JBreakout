@@ -1,6 +1,5 @@
 package jbreakout.component;
 
-import java.awt.Color;
 import java.util.Optional;
 import javax.sound.sampled.Clip;
 import jbreakout.resource.SoundFactory;
@@ -10,12 +9,12 @@ public class SoundBall extends Ball {
 
   private final Optional<Clip> bounceClip = SoundFactory.ballBounceClip();
 
-  public SoundBall(Color color, int size, int a, int vx, int vy, int x, int y) {
-    super(color, a, vx, vy, x, y);
+  public SoundBall(int a, int vx, int vy, int x, int y) {
+    super(a, vx, vy, x, y);
   }
 
-  public SoundBall(Color color, int size, int a) {
-    super(color, a);
+  public SoundBall(int a) {
+    super(a);
   }
 
   @Override
