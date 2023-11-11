@@ -32,10 +32,6 @@ public class Ball {
     return size;
   }
 
-  public void accelerate() {
-    isAccelerating = true;
-  }
-
   public void setVX(int vx) {
     this.vx = vx;
   }
@@ -101,5 +97,9 @@ public class Ball {
   public void move() {
     x += vx;
     y += vy;
+  }
+
+  public void accelerate() {
+    isAccelerating = true;
   }
 }
