@@ -77,24 +77,24 @@ public class Brick {
     Rectangle thisRect = new Rectangle(x, y, width, height);
 
     Line2D.Double topLineOfBall =
-        new Line2D.Double(ball.getX(), ball.getY(), ball.getX() + ball.getSize(), ball.getY());
+        new Line2D.Double(ball.getX(), ball.getY(), ball.getX() + ball.size(), ball.getY());
 
     Line2D.Double bottomLineOfBall =
         new Line2D.Double(
             ball.getX(),
-            ball.getY() + ball.getSize(),
-            ball.getX() + ball.getSize(),
-            ball.getY() + ball.getSize());
+            ball.getY() + ball.size(),
+            ball.getX() + ball.size(),
+            ball.getY() + ball.size());
 
     Line2D.Double leftLineOfBall =
-        new Line2D.Double(ball.getX(), ball.getY(), ball.getX(), ball.getY() + ball.getSize());
+        new Line2D.Double(ball.getX(), ball.getY(), ball.getX(), ball.getY() + ball.size());
 
     Line2D.Double rightLineOfBall =
         new Line2D.Double(
-            ball.getX() + ball.getSize(),
+            ball.getX() + ball.size(),
             ball.getY(),
-            ball.getX() + ball.getSize(),
-            ball.getY() + ball.getSize());
+            ball.getX() + ball.size(),
+            ball.getY() + ball.size());
 
     if (thisRect.intersectsLine(topLineOfBall) && thisRect.intersectsLine(bottomLineOfBall)) {
       ball.bounceX();

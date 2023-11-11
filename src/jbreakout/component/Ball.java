@@ -28,7 +28,7 @@ public class Ball {
     this(color, size, a, 0, 0, 0, 0);
   }
 
-  public int getSize() {
+  public int size() {
     return size;
   }
 

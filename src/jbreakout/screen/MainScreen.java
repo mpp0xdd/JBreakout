@@ -166,9 +166,9 @@ public class MainScreen extends GameScreen {
       ball.bounceX();
       ball.setX(0);
     }
-    if (ball.getX() + ball.getSize() > SCREEN_WIDTH) {
+    if (ball.getX() + ball.size() > SCREEN_WIDTH) {
       ball.bounceX();
-      ball.setX(SCREEN_WIDTH - ball.getSize());
+      ball.setX(SCREEN_WIDTH - ball.size());
     }
     if (ball.getY() < 0) {
       ball.bounceY();
