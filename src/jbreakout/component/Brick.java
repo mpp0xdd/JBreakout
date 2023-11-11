@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
+import jbreakout.common.Ball;
 
 public class Brick {
 

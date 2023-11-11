@@ -41,7 +41,7 @@ import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.sound.sampled.Clip;
-import jbreakout.component.Ball;
+import jbreakout.common.Ball;
 import jbreakout.component.Brick;
 import jbreakout.component.Paddle;
 import jbreakout.component.SoundBall;

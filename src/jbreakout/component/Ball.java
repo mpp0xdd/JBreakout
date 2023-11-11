@@ -3,7 +3,7 @@ package jbreakout.component;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball {
+public class Ball implements jbreakout.common.Ball {
   private Color color;
   private int size;
   private int a;
@@ -28,42 +28,52 @@ public class Ball {
     this(color, size, a, 0, 0, 0, 0);
   }
 
+  @Override
   public int size() {
     return size;
   }
 
+  @Override
   public void setVX(int vx) {
     this.vx = vx;
   }
 
+  @Override
   public void setVY(int vy) {
     this.vy = vy;
   }
 
+  @Override
   public int getX() {
     return x;
   }
 
+  @Override
   public void setX(int x) {
     this.x = x;
   }
 
+  @Override
   public int getY() {
     return y;
   }
 
+  @Override
   public void setY(int y) {
     this.y = y;
   }
 
+  @Override
   public boolean isVisible() {
     return visible;
   }
 
+  @Override
   public void setVisible(boolean visible) {
     this.visible = visible;
   }
 
+  @Override
   public void draw(Graphics g) {
     if (!visible) {
       return;
@@ -81,24 +91,29 @@ public class Ball {
     }
   }
 
+  @Override
   public void bounceX() {
     vx = -vx;
   }
 
+  @Override
   public void bounceY() {
     vy = -vy;
   }
 
+  @Override
   public void bounce() {
     vx = -vx;
     vy = -vy;
   }
 
+  @Override
   public void move() {
     x += vx;
     y += vy;
   }
 
+  @Override
   public void accelerate() {
     isAccelerating = true;
   }
