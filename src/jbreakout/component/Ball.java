@@ -2,10 +2,10 @@ package jbreakout.component;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import jbreakout.common.Constants;
 
 public class Ball implements jbreakout.common.Ball {
   private Color color;
-  private int size;
   private int a;
   private int vx;
   private int vy;
@@ -14,9 +14,8 @@ public class Ball implements jbreakout.common.Ball {
   private boolean isAccelerating = false;
   private boolean visible = false;
 
-  public Ball(Color color, int size, int a, int vx, int vy, int x, int y) {
+  public Ball(Color color, int a, int vx, int vy, int x, int y) {
     this.color = color;
-    this.size = size;
     this.a = a;
     this.vx = vx;
     this.vy = vy;
@@ -24,13 +23,13 @@ public class Ball implements jbreakout.common.Ball {
     this.y = y;
   }
 
-  public Ball(Color color, int size, int a) {
-    this(color, size, a, 0, 0, 0, 0);
+  public Ball(Color color, int a) {
+    this(color, a, 0, 0, 0, 0);
   }
 
   @Override
   public int size() {
-    return size;
+    return Constants.BALL_SIZE;
   }
 
   @Override
@@ -80,12 +79,12 @@ public class Ball implements jbreakout.common.Ball {
     }
 
     g.setColor(color);
-    g.fillOval(x, y, size, size);
+    g.fillOval(x, y, size(), size());
 
     if (isAccelerating) {
       for (int i = 0; i < a; i++) {
         move();
-        g.fillOval(x, y, size, size);
+        g.fillOval(x, y, size(), size());
       }
       isAccelerating = false;
     }

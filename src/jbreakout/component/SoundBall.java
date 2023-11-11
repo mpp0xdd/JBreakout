@@ -11,11 +11,11 @@ public class SoundBall extends Ball {
   private final Optional<Clip> bounceClip = SoundFactory.ballBounceClip();
 
   public SoundBall(Color color, int size, int a, int vx, int vy, int x, int y) {
-    super(color, size, a, vx, vy, x, y);
+    super(color, a, vx, vy, x, y);
   }
 
   public SoundBall(Color color, int size, int a) {
-    super(color, size, a);
+    super(color, a);
   }
 
   @Override
