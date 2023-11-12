@@ -10,8 +10,8 @@ public class SoundPaddle extends Paddle {
 
   private final Optional<Clip> reboundClip = SoundFactory.paddleReboundClip();
 
-  public SoundPaddle(int width, int height, int x, int y) {
-    super(width, height, x, y);
+  public SoundPaddle(int x, int y) {
+    super(x, y);
   }
 
   @Override
