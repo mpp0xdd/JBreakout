@@ -49,11 +49,11 @@ public class Brick {
     this.y = y;
   }
 
-  public Color getColor() {
+  public Color color() {
     return color;
   }
 
-  public int getWidth() {
+  public int width() {
     return width;
   }
 

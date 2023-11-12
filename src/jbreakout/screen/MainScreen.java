@@ -84,7 +84,7 @@ public class MainScreen extends GameScreen {
           @Override
           public void mouseMoved(MouseEvent e) {
             int x = e.getX();
-            int halfWidthOfPaddle = paddle.getWidth() / 2;
+            int halfWidthOfPaddle = paddle.width() / 2;
             if (halfWidthOfPaddle <= x && x <= SCREEN_WIDTH - halfWidthOfPaddle) {
               paddle.setX(x - halfWidthOfPaddle);
             }

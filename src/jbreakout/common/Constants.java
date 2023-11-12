@@ -44,7 +44,7 @@ public final class Constants {
   public static final int BRICKS_MARGIN = 4;
   public static final ToIntFunction<Brick> BRICK_TO_SCORE =
       brick -> {
-        Color brickColor = brick.getColor();
+        Color brickColor = brick.color();
         if (brickColor.equals(YELLOW)) {
           return 1;
         } else if (brickColor.equals(GREEN)) {
