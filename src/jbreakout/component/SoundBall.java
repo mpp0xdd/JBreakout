@@ -5,7 +5,7 @@ import javax.sound.sampled.Clip;
 import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
 
-public class SoundBall extends Ball {
+class SoundBall extends Ball {
 
   private final Optional<Clip> bounceClip = SoundFactory.ballBounceClip();
 

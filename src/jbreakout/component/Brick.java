@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import jbreakout.common.Ball;
 
-public class Brick implements jbreakout.common.Brick {
+class Brick implements jbreakout.common.Brick {
 
   protected Color color;
   protected int width;

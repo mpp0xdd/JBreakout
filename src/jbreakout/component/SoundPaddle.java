@@ -6,7 +6,7 @@ import jbreakout.common.Ball;
 import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
 
-public class SoundPaddle extends Paddle {
+class SoundPaddle extends Paddle {
 
   private final Optional<Clip> reboundClip = SoundFactory.paddleReboundClip();
 

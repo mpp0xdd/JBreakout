@@ -4,7 +4,7 @@ import java.awt.Color;
 import jbreakout.common.Ball;
 import jbreakout.common.Constants;
 
-public class Paddle extends Brick implements jbreakout.common.Paddle {
+class Paddle extends Brick implements jbreakout.common.Paddle {
   public Paddle(int x, int y) {
     super(Color.BLUE, Constants.PADDLE_WIDTH, Constants.PADDLE_HEIGHT, x, y);
   }

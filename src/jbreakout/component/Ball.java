@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import jbreakout.common.Constants;
 
-public class Ball implements jbreakout.common.Ball {
+class Ball implements jbreakout.common.Ball {
   private int vx;
   private int vy;
   private int x;
