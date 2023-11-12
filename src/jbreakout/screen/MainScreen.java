@@ -56,7 +56,7 @@ public class MainScreen extends GameScreen {
   private int currentTurn = 1;
   private int currentTotalScore = 0;
 
-  private Brick[] bricks = brickFactory.lay(BRICKS_X, BRICKS_Y);
+  private Brick[] bricks = brickFactory.createBricks(BRICKS_X, BRICKS_Y);
 
   private Ball ball = ballFactory.createBall();
 

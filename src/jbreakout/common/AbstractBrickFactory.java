@@ -4,7 +4,7 @@ import java.awt.Color;
 
 public abstract class AbstractBrickFactory<T extends Brick> {
 
-  public final T[] lay(int x, int y) {
+  public final T[] createBricks(int x, int y) {
     if (colors().length != rows()) {
       throw (new IllegalArgumentException("レンガの色情報が正しくありません"));
     }
