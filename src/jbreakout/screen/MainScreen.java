@@ -13,8 +13,6 @@ import static jbreakout.common.Constants.CURRENT_TURN_DRAWING_AREA_Y;
 import static jbreakout.common.Constants.FONT_OF_DRAWING_STRING;
 import static jbreakout.common.Constants.GAME_LOOP_INTERVAL;
 import static jbreakout.common.Constants.GAME_ROUNDS;
-import static jbreakout.common.Constants.PADDLE_INIT_X;
-import static jbreakout.common.Constants.PADDLE_INIT_Y;
 import static jbreakout.common.Constants.PLAYER_MAX_TURNS;
 import static jbreakout.common.Constants.RANDOM_BALL_VX;
 import static jbreakout.common.Constants.RANDOM_BALL_VY;
@@ -31,12 +29,13 @@ import java.util.TimerTask;
 import javax.sound.sampled.Clip;
 import jbreakout.common.AbstractBallFactory;
 import jbreakout.common.AbstractBrickFactory;
+import jbreakout.common.AbstractPaddleFactory;
 import jbreakout.common.Ball;
 import jbreakout.common.Brick;
 import jbreakout.common.Paddle;
 import jbreakout.component.BallFactory;
 import jbreakout.component.BrickFactory;
-import jbreakout.component.SoundPaddle;
+import jbreakout.component.PaddleFactory;
 import jbreakout.resource.SoundFactory;
 import jglib.component.GameScreen;
 import jglib.util.GameUtilities;
@@ -48,6 +47,7 @@ public class MainScreen extends GameScreen {
 
   private final AbstractBrickFactory<?> brickFactory = new BrickFactory();
   private final AbstractBallFactory<?> ballFactory = new BallFactory();
+  private final AbstractPaddleFactory<?> paddleFactory = new PaddleFactory();
 
   private boolean isGameOver = false;
   private int currentNumOfBricksEliminated = 0;
@@ -60,8 +60,7 @@ public class MainScreen extends GameScreen {
 
   private Ball ball = ballFactory.createBall();
 
-  private Paddle paddle =
-      new SoundPaddle(PADDLE_INIT_X, PADDLE_INIT_Y);
+  private Paddle paddle = paddleFactory.createPaddle();
 
   public MainScreen() {
     super(SCREEN_WIDTH, SCREEN_HEIGHT);
