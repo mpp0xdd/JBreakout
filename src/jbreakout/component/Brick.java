@@ -8,12 +8,6 @@ import jbreakout.common.Ball;
 
 public class Brick implements jbreakout.common.Brick {
 
-  public static void repair(jbreakout.common.Brick[] bricks) {
-    for (jbreakout.common.Brick brick : bricks) {
-      brick.repair();
-    }
-  }
-
   protected Color color;
   protected int width;
   protected int height;

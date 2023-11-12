@@ -192,7 +192,7 @@ public class MainScreen extends GameScreen {
         } else {
           currentRound++;
           activateBallRelocationTimer();
-          jbreakout.component.Brick.repair(bricks);
+          repair(bricks);
           currentScore = 0;
           currentNumOfBricksEliminated = 0;
         }
@@ -201,5 +201,11 @@ public class MainScreen extends GameScreen {
     }
 
     repaint();
+  }
+
+  private void repair(Brick[] bricks) {
+    for (Brick brick : bricks) {
+      brick.repair();
+    }
   }
 }
