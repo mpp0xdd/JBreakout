@@ -20,7 +20,6 @@ import static jbreakout.common.Constants.GAME_LOOP_INTERVAL;
 import static jbreakout.common.Constants.GAME_ROUNDS;
 import static jbreakout.common.Constants.NUM_OF_BRICK_COLUMNS;
 import static jbreakout.common.Constants.NUM_OF_BRICK_ROWS;
-import static jbreakout.common.Constants.PADDLE_COLOR;
 import static jbreakout.common.Constants.PADDLE_HEIGHT;
 import static jbreakout.common.Constants.PADDLE_INIT_X;
 import static jbreakout.common.Constants.PADDLE_INIT_Y;
@@ -73,7 +72,7 @@ public class MainScreen extends GameScreen {
   private Ball ball = new SoundBall(BALL_ACCELERATION);
 
   private Paddle paddle =
-      new SoundPaddle(PADDLE_COLOR, PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_INIT_X, PADDLE_INIT_Y);
+      new SoundPaddle(PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_INIT_X, PADDLE_INIT_Y);
 
   public MainScreen() {
     super(SCREEN_WIDTH, SCREEN_HEIGHT);
