@@ -40,7 +40,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.sound.sampled.Clip;
 import jbreakout.common.Ball;
-import jbreakout.component.Brick;
+import jbreakout.common.Brick;
 import jbreakout.component.Paddle;
 import jbreakout.component.SoundBall;
 import jbreakout.component.SoundPaddle;
@@ -60,7 +60,7 @@ public class MainScreen extends GameScreen {
   private int currentTotalScore = 0;
 
   private Brick[] bricks =
-      Brick.lay(
+      jbreakout.component.Brick.lay(
           NUM_OF_BRICK_ROWS,
           NUM_OF_BRICK_COLUMNS,
           COLORS_OF_BRICKS,
@@ -205,7 +205,7 @@ public class MainScreen extends GameScreen {
         } else {
           currentRound++;
           activateBallRelocationTimer();
-          Brick.repair(bricks);
+          jbreakout.component.Brick.repair(bricks);
           currentScore = 0;
           currentNumOfBricksEliminated = 0;
         }

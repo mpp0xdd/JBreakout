@@ -6,9 +6,9 @@ import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import jbreakout.common.Ball;
 
-public class Brick {
+public class Brick implements jbreakout.common.Brick {
 
-  public static Brick[] lay(
+  public static jbreakout.common.Brick[] lay(
       int rows, int columns, Color[] colors, int width, int height, int x, int y, int margin) {
     if (colors.length != rows) {
       throw (new IllegalArgumentException("レンガの色情報が正しくありません"));
@@ -28,9 +28,9 @@ public class Brick {
     return result;
   }
 
-  public static void repair(Brick[] bricks) {
-    for (Brick brick : bricks) {
-      brick.eliminated = false;
+  public static void repair(jbreakout.common.Brick[] bricks) {
+    for (jbreakout.common.Brick brick : bricks) {
+      brick.repair();
     }
   }
 
@@ -49,18 +49,27 @@ public class Brick {
     this.y = y;
   }
 
+  @Override
   public Color color() {
     return color;
   }
 
+  @Override
   public int width() {
     return width;
   }
 
+  @Override
   public void eliminate() {
     eliminated = true;
   }
 
+  @Override
+  public void repair() {
+    eliminated = false;
+  }
+
+  @Override
   public void draw(Graphics g) {
     if (eliminated) {
       return;
@@ -70,6 +79,7 @@ public class Brick {
     g.fillRect(x, y, width, height);
   }
 
+  @Override
   public Ball rebound(Ball ball) {
     if (eliminated) {
       return null;

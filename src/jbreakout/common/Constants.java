@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.function.IntSupplier;
 import java.util.function.ToIntFunction;
-import jbreakout.component.Brick;
 
 public final class Constants {
 
