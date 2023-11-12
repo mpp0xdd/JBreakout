@@ -2,13 +2,9 @@ package jbreakout.screen;
 
 import static jbreakout.common.Constants.BALL_INIT_Y;
 import static jbreakout.common.Constants.BALL_RELOCATION_INTERVAL;
-import static jbreakout.common.Constants.BRICKS_MARGIN;
 import static jbreakout.common.Constants.BRICKS_X;
 import static jbreakout.common.Constants.BRICKS_Y;
-import static jbreakout.common.Constants.BRICK_HEIGHT;
 import static jbreakout.common.Constants.BRICK_TO_SCORE;
-import static jbreakout.common.Constants.BRICK_WIDTH;
-import static jbreakout.common.Constants.COLORS_OF_BRICKS;
 import static jbreakout.common.Constants.COLOR_OF_DRAWING_STRING;
 import static jbreakout.common.Constants.CURRENT_ROUND_DRAWING_AREA_X;
 import static jbreakout.common.Constants.CURRENT_ROUND_DRAWING_AREA_Y;
@@ -17,8 +13,6 @@ import static jbreakout.common.Constants.CURRENT_TURN_DRAWING_AREA_Y;
 import static jbreakout.common.Constants.FONT_OF_DRAWING_STRING;
 import static jbreakout.common.Constants.GAME_LOOP_INTERVAL;
 import static jbreakout.common.Constants.GAME_ROUNDS;
-import static jbreakout.common.Constants.NUM_OF_BRICK_COLUMNS;
-import static jbreakout.common.Constants.NUM_OF_BRICK_ROWS;
 import static jbreakout.common.Constants.PADDLE_HEIGHT;
 import static jbreakout.common.Constants.PADDLE_INIT_X;
 import static jbreakout.common.Constants.PADDLE_INIT_Y;
@@ -37,9 +31,11 @@ import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.sound.sampled.Clip;
+import jbreakout.common.AbstractBrickFactory;
 import jbreakout.common.Ball;
 import jbreakout.common.Brick;
 import jbreakout.common.Paddle;
+import jbreakout.component.BrickFactory;
 import jbreakout.component.SoundBall;
 import jbreakout.component.SoundPaddle;
 import jbreakout.resource.SoundFactory;
@@ -50,6 +46,9 @@ public class MainScreen extends GameScreen {
 
   private final Optional<Clip> bgmClip = SoundFactory.mainScreenBgmClip();
   private final Optional<Clip> fallClip = SoundFactory.ballFallClip();
+
+  private final AbstractBrickFactory<?> brickFactory = new BrickFactory();
+
   private boolean isGameOver = false;
   private int currentNumOfBricksEliminated = 0;
   private int currentRound = 1;
@@ -57,16 +56,7 @@ public class MainScreen extends GameScreen {
   private int currentTurn = 1;
   private int currentTotalScore = 0;
 
-  private Brick[] bricks =
-      jbreakout.component.Brick.lay(
-          NUM_OF_BRICK_ROWS,
-          NUM_OF_BRICK_COLUMNS,
-          COLORS_OF_BRICKS,
-          BRICK_WIDTH,
-          BRICK_HEIGHT,
-          BRICKS_X,
-          BRICKS_Y,
-          BRICKS_MARGIN);
+  private Brick[] bricks = brickFactory.lay(BRICKS_X, BRICKS_Y);
 
   private Ball ball = new SoundBall();
 

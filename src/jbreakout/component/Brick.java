@@ -8,26 +8,6 @@ import jbreakout.common.Ball;
 
 public class Brick implements jbreakout.common.Brick {
 
-  public static jbreakout.common.Brick[] lay(
-      int rows, int columns, Color[] colors, int width, int height, int x, int y, int margin) {
-    if (colors.length != rows) {
-      throw (new IllegalArgumentException("レンガの色情報が正しくありません"));
-    }
-
-    Brick[] result = new SoundBrick[rows * columns];
-    for (int i = 0; i < rows; i++) {
-      int brickY = i * height + y;
-      brickY += i * margin;
-      for (int j = 0; j < columns; j++) {
-        int brickX = j * width + x;
-        brickX += j * margin;
-        result[i * columns + j] = new SoundBrick(colors[i], width, height, brickX, brickY);
-      }
-    }
-
-    return result;
-  }
-
   public static void repair(jbreakout.common.Brick[] bricks) {
     for (jbreakout.common.Brick brick : bricks) {
       brick.repair();

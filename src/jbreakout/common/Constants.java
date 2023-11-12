@@ -32,11 +32,6 @@ public final class Constants {
   public static final Font FONT_OF_DRAWING_STRING = new Font(Font.SANS_SERIF, Font.BOLD, 43);
 
   public static final int NUM_OF_BRICK_ROWS = 8;
-  public static final int NUM_OF_BRICK_COLUMNS = 14;
-  public static final Color[] COLORS_OF_BRICKS = {
-    RED, RED, ORANGE, ORANGE, GREEN, GREEN, YELLOW, YELLOW
-  };
-  public static final int BRICK_WIDTH = 30;
   public static final int BRICK_HEIGHT = 10;
   public static final int BRICKS_X = 4;
   public static final int BRICKS_Y = 100;
