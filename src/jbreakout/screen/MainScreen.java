@@ -31,12 +31,13 @@ import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.sound.sampled.Clip;
+import jbreakout.common.AbstractBallFactory;
 import jbreakout.common.AbstractBrickFactory;
 import jbreakout.common.Ball;
 import jbreakout.common.Brick;
 import jbreakout.common.Paddle;
+import jbreakout.component.BallFactory;
 import jbreakout.component.BrickFactory;
-import jbreakout.component.SoundBall;
 import jbreakout.component.SoundPaddle;
 import jbreakout.resource.SoundFactory;
 import jglib.component.GameScreen;
@@ -48,6 +49,7 @@ public class MainScreen extends GameScreen {
   private final Optional<Clip> fallClip = SoundFactory.ballFallClip();
 
   private final AbstractBrickFactory<?> brickFactory = new BrickFactory();
+  private final AbstractBallFactory<?> ballFactory = new BallFactory();
 
   private boolean isGameOver = false;
   private int currentNumOfBricksEliminated = 0;
@@ -58,7 +60,7 @@ public class MainScreen extends GameScreen {
 
   private Brick[] bricks = brickFactory.lay(BRICKS_X, BRICKS_Y);
 
-  private Ball ball = new SoundBall();
+  private Ball ball = ballFactory.createBall();
 
   private Paddle paddle =
       new SoundPaddle(PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_INIT_X, PADDLE_INIT_Y);
