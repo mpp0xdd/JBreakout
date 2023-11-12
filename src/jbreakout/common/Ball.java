@@ -35,5 +35,7 @@ public interface Ball {
 
   void move();
 
+  int acceleration();
+
   void accelerate();
 }

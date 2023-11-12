@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import jbreakout.common.Constants;
 
 public class Ball implements jbreakout.common.Ball {
-  private int a;
   private int vx;
   private int vy;
   private int x;
@@ -13,16 +12,15 @@ public class Ball implements jbreakout.common.Ball {
   private boolean isAccelerating = false;
   private boolean visible = false;
 
-  public Ball(int a, int vx, int vy, int x, int y) {
-    this.a = a;
+  public Ball(int vx, int vy, int x, int y) {
     this.vx = vx;
     this.vy = vy;
     this.x = x;
     this.y = y;
   }
 
-  public Ball(int a) {
-    this(a, 0, 0, 0, 0);
+  public Ball() {
+    this(0, 0, 0, 0);
   }
 
   @Override
@@ -85,7 +83,7 @@ public class Ball implements jbreakout.common.Ball {
     g.fillOval(x, y, size(), size());
 
     if (isAccelerating) {
-      for (int i = 0; i < a; i++) {
+      for (int i = 0; i < acceleration(); i++) {
         move();
         g.fillOval(x, y, size(), size());
       }
@@ -113,6 +111,11 @@ public class Ball implements jbreakout.common.Ball {
   public void move() {
     x += vx;
     y += vy;
+  }
+
+  @Override
+  public int acceleration() {
+    return 8;
   }
 
   @Override

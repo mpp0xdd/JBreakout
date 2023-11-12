@@ -65,7 +65,6 @@ public final class Constants {
   public static final IntSupplier RANDOM_BALL_VX =
       () -> (5 + (int) ((5 + 1) * Math.random())) * (Math.random() >= 0.5 ? 1 : -1);
   public static final IntSupplier RANDOM_BALL_VY = () -> 5 + (int) ((5 + 1) * Math.random());
-  public static final int BALL_ACCELERATION = 8;
 
   public static final int PADDLE_WIDTH = 60;
   public static final int PADDLE_HEIGHT = 10;

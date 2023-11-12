@@ -1,6 +1,5 @@
 package jbreakout.screen;
 
-import static jbreakout.common.Constants.BALL_ACCELERATION;
 import static jbreakout.common.Constants.BALL_INIT_Y;
 import static jbreakout.common.Constants.BALL_RELOCATION_INTERVAL;
 import static jbreakout.common.Constants.BRICKS_MARGIN;
@@ -69,7 +68,7 @@ public class MainScreen extends GameScreen {
           BRICKS_Y,
           BRICKS_MARGIN);
 
-  private Ball ball = new SoundBall(BALL_ACCELERATION);
+  private Ball ball = new SoundBall();
 
   private Paddle paddle =
       new SoundPaddle(PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_INIT_X, PADDLE_INIT_Y);
