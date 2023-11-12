@@ -57,7 +57,6 @@ public final class Constants {
         }
       };
 
-  public static final Color BALL_COLOR = Color.WHITE;
   public static final int BALL_SIZE = 10;
   public static final IntSupplier RANDOM_BALL_X =
       () -> (int) ((SCREEN_WIDTH - BALL_SIZE) * Math.random());
