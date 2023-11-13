@@ -21,6 +21,7 @@ import static jbreakout.common.Constants.SCREEN_HEIGHT;
 import static jbreakout.common.Constants.SCREEN_WIDTH;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.util.Optional;
@@ -56,7 +57,7 @@ public class MainScreen extends GameScreen {
   private int currentTurn = 1;
   private int currentTotalScore = 0;
 
-  private Brick[] bricks = brickFactory.createBricks(BRICKS_X, BRICKS_Y);
+  private Brick[] bricks = brickFactory.createBricks(new Point(BRICKS_X, BRICKS_Y));
 
   private Ball ball = ballFactory.createBall();
 
