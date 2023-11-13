@@ -1,5 +1,6 @@
 package jbreakout.component;
 
+import java.awt.Point;
 import java.util.Optional;
 import javax.sound.sampled.Clip;
 import jbreakout.common.Ball;
@@ -10,8 +11,8 @@ class SoundPaddle extends Paddle {
 
   private final Optional<Clip> reboundClip = SoundFactory.paddleReboundClip();
 
-  public SoundPaddle(int x, int y) {
-    super(x, y);
+  public SoundPaddle(Point point) {
+    super(point);
   }
 
   @Override

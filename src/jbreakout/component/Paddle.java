@@ -1,12 +1,13 @@
 package jbreakout.component;
 
 import java.awt.Color;
+import java.awt.Point;
 import jbreakout.common.Ball;
 import jbreakout.common.Constants;
 
 class Paddle extends Brick implements jbreakout.common.Paddle {
-  public Paddle(int x, int y) {
-    super(Color.BLUE, Constants.PADDLE_WIDTH, Constants.PADDLE_HEIGHT, x, y);
+  public Paddle(Point point) {
+    super(Color.BLUE, Constants.PADDLE_WIDTH, Constants.PADDLE_HEIGHT, point.x, point.y);
   }
 
   @Override

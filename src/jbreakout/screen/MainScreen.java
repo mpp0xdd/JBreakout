@@ -13,6 +13,8 @@ import static jbreakout.common.Constants.CURRENT_TURN_DRAWING_AREA_Y;
 import static jbreakout.common.Constants.FONT_OF_DRAWING_STRING;
 import static jbreakout.common.Constants.GAME_LOOP_INTERVAL;
 import static jbreakout.common.Constants.GAME_ROUNDS;
+import static jbreakout.common.Constants.PADDLE_INIT_X;
+import static jbreakout.common.Constants.PADDLE_INIT_Y;
 import static jbreakout.common.Constants.PLAYER_MAX_TURNS;
 import static jbreakout.common.Constants.RANDOM_BALL_VX;
 import static jbreakout.common.Constants.RANDOM_BALL_VY;
@@ -61,7 +63,7 @@ public class MainScreen extends GameScreen {
 
   private Ball ball = ballFactory.createBall();
 
-  private Paddle paddle = paddleFactory.createPaddle();
+  private Paddle paddle = paddleFactory.createPaddle(new Point(PADDLE_INIT_X, PADDLE_INIT_Y));
 
   public MainScreen() {
     super(SCREEN_WIDTH, SCREEN_HEIGHT);
