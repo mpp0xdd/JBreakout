@@ -1,9 +1,8 @@
 package jbreakout.common;
 
 import java.awt.Color;
-import java.awt.Graphics;
 
-public interface Ball {
+public interface Ball extends Drawable {
 
   int size();
 
@@ -24,8 +23,6 @@ public interface Ball {
   boolean isVisible();
 
   void setVisible(boolean visible);
-
-  void draw(Graphics g);
 
   void bounceX();
 

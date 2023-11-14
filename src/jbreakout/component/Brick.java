@@ -34,6 +34,11 @@ class Brick implements jbreakout.common.Brick {
   }
 
   @Override
+  public int height() {
+    return height;
+  }
+
+  @Override
   public void eliminate() {
     eliminated = true;
   }
@@ -59,7 +64,7 @@ class Brick implements jbreakout.common.Brick {
       return null;
     }
 
-    Rectangle thisRect = new Rectangle(x, y, width, height);
+    Rectangle thisRect = asRectangle();
 
     Line2D.Double topLineOfBall =
         new Line2D.Double(ball.getX(), ball.getY(), ball.getX() + ball.size(), ball.getY());
@@ -97,5 +102,10 @@ class Brick implements jbreakout.common.Brick {
     }
 
     return null;
+  }
+
+  @Override
+  public Rectangle asRectangle() {
+    return new Rectangle(x, y, width, height);
   }
 }

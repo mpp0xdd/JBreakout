@@ -1,19 +1,12 @@
 package jbreakout.common;
 
 import java.awt.Color;
-import java.awt.Graphics;
 
-public interface Brick {
+public interface Brick extends Bounceable, Rectangular, Drawable {
 
   Color color();
-
-  int width();
 
   void eliminate();
 
   void repair();
-
-  void draw(Graphics g);
-
-  Ball rebound(Ball ball);
 }
