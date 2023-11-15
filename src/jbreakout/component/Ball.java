@@ -8,17 +8,19 @@ import jbreakout.common.Velocity;
 class Ball implements jbreakout.common.Ball {
   private Velocity velocity;
   private final Point location;
+  private final int size;
   private boolean isAccelerating = false;
   private boolean visible = false;
 
-  public Ball(Velocity velocity, Point location) {
+  public Ball(Velocity velocity, Point location, int size) {
     this.velocity = velocity;
     this.location = location.getLocation();
+    this.size = size;
   }
 
   @Override
   public int size() {
-    return 10;
+    return size;
   }
 
   @Override

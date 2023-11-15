@@ -8,6 +8,11 @@ public class BallFactory extends AbstractBallFactory<SoundBall> {
 
   @Override
   public SoundBall createBall(Velocity velocity, Point location) {
-    return new SoundBall(velocity, location);
+    return new SoundBall(velocity, location, size());
+  }
+
+  @Override
+  public int size() {
+    return 10;
   }
 }

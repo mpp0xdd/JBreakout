@@ -156,7 +156,7 @@ public abstract class AbstractBreakoutPane implements Drawable {
   protected abstract AbstractPaddleFactory<?> paddleFactory();
 
   private Point ballPoint() {
-    final int x = (int) ((width() - 10) * Math.random());
+    final int x = (int) ((width() - ballFactory().size()) * Math.random());
 
     final int bricksY = bricksPoint().y;
     final int numOfBrickRows = brickFactory().rows();

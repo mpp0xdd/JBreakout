@@ -11,8 +11,8 @@ class SoundBall extends Ball {
 
   private final Optional<Clip> bounceClip = SoundFactory.ballBounceClip();
 
-  public SoundBall(Velocity velocity, Point location) {
-    super(velocity, location);
+  public SoundBall(Velocity velocity, Point location, int size) {
+    super(velocity, location, size);
   }
 
   @Override
