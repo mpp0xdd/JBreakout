@@ -1,13 +1,8 @@
 package jbreakout.common;
 
-import static java.awt.Color.GREEN;
-import static java.awt.Color.ORANGE;
-import static java.awt.Color.RED;
-import static java.awt.Color.YELLOW;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.function.IntSupplier;
-import java.util.function.ToIntFunction;
 
 public final class Constants {
 
@@ -36,21 +31,6 @@ public final class Constants {
   public static final int BRICKS_X = 4;
   public static final int BRICKS_Y = 100;
   public static final int BRICKS_MARGIN = 4;
-  public static final ToIntFunction<Brick> BRICK_TO_SCORE =
-      brick -> {
-        Color brickColor = brick.color();
-        if (brickColor.equals(YELLOW)) {
-          return 1;
-        } else if (brickColor.equals(GREEN)) {
-          return 3;
-        } else if (brickColor.equals(ORANGE)) {
-          return 5;
-        } else if (brickColor.equals(RED)) {
-          return 7;
-        } else {
-          return 1;
-        }
-      };
 
   public static final int BALL_SIZE = 10;
   public static final IntSupplier RANDOM_BALL_X =

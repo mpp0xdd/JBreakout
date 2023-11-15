@@ -4,7 +4,6 @@ import static jbreakout.common.Constants.BALL_INIT_Y;
 import static jbreakout.common.Constants.BALL_RELOCATION_INTERVAL;
 import static jbreakout.common.Constants.BRICKS_X;
 import static jbreakout.common.Constants.BRICKS_Y;
-import static jbreakout.common.Constants.BRICK_TO_SCORE;
 import static jbreakout.common.Constants.COLOR_OF_DRAWING_STRING;
 import static jbreakout.common.Constants.CURRENT_ROUND_DRAWING_AREA_X;
 import static jbreakout.common.Constants.CURRENT_ROUND_DRAWING_AREA_Y;
@@ -184,7 +183,7 @@ public class MainScreen extends GameScreen {
         continue;
       }
 
-      currentScore += BRICK_TO_SCORE.applyAsInt(brick);
+      currentScore += brick.score();
       brick.eliminate();
       currentNumOfBricksEliminated++;
       if (currentNumOfBricksEliminated == bricks.length) {

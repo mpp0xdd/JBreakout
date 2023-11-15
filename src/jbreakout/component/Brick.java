@@ -1,5 +1,9 @@
 package jbreakout.component;
 
+import static java.awt.Color.GREEN;
+import static java.awt.Color.ORANGE;
+import static java.awt.Color.RED;
+import static java.awt.Color.YELLOW;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -24,8 +28,18 @@ class Brick implements jbreakout.common.Brick {
   }
 
   @Override
-  public Color color() {
-    return color;
+  public int score() {
+    if (color.equals(YELLOW)) {
+      return 1;
+    } else if (color.equals(GREEN)) {
+      return 3;
+    } else if (color.equals(ORANGE)) {
+      return 5;
+    } else if (color.equals(RED)) {
+      return 7;
+    } else {
+      return 1;
+    }
   }
 
   @Override
