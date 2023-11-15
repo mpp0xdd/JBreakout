@@ -2,6 +2,7 @@ package jbreakout.component;
 
 import java.util.Optional;
 import javax.sound.sampled.Clip;
+import jbreakout.common.Velocity;
 import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
 
@@ -9,8 +10,8 @@ class SoundBall extends Ball {
 
   private final Optional<Clip> bounceClip = SoundFactory.ballBounceClip();
 
-  public SoundBall(int vx, int vy, int x, int y) {
-    super(vx, vy, x, y);
+  public SoundBall(Velocity velocity, int x, int y) {
+    super(velocity, x, y);
   }
 
   public SoundBall() {

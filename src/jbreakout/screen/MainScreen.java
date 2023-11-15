@@ -35,6 +35,7 @@ import jbreakout.common.AbstractPaddleFactory;
 import jbreakout.common.Ball;
 import jbreakout.common.Brick;
 import jbreakout.common.Paddle;
+import jbreakout.common.Velocity;
 import jbreakout.component.BallFactory;
 import jbreakout.component.BrickFactory;
 import jbreakout.component.PaddleFactory;
@@ -87,8 +88,7 @@ public class MainScreen extends GameScreen {
 
   public void activateBallRelocationTimer() {
     ball.setVisible(false);
-    ball.setVX(RANDOM_BALL_VX.getAsInt());
-    ball.setVY(RANDOM_BALL_VY.getAsInt());
+    ball.setVelocity(Velocity.of(RANDOM_BALL_VX.getAsInt(), RANDOM_BALL_VY.getAsInt()));
     ball.setX(RANDOM_BALL_X.getAsInt());
     ball.setY(BALL_INIT_Y);
 

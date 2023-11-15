@@ -4,9 +4,7 @@ public interface Ball extends Drawable {
 
   int size();
 
-  void setVX(int vx);
-
-  void setVY(int vy);
+  void setVelocity(Velocity velocity);
 
   int getX();
 

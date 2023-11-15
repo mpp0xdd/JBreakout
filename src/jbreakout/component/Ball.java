@@ -3,24 +3,23 @@ package jbreakout.component;
 import java.awt.Color;
 import java.awt.Graphics;
 import jbreakout.common.Constants;
+import jbreakout.common.Velocity;
 
 class Ball implements jbreakout.common.Ball {
-  private int vx;
-  private int vy;
+  private Velocity velocity;
   private int x;
   private int y;
   private boolean isAccelerating = false;
   private boolean visible = false;
 
-  public Ball(int vx, int vy, int x, int y) {
-    this.vx = vx;
-    this.vy = vy;
+  public Ball(Velocity velocity, int x, int y) {
+    this.velocity = velocity;
     this.x = x;
     this.y = y;
   }
 
   public Ball() {
-    this(0, 0, 0, 0);
+    this(Velocity.ZERO, 0, 0);
   }
 
   @Override
@@ -29,13 +28,8 @@ class Ball implements jbreakout.common.Ball {
   }
 
   @Override
-  public void setVX(int vx) {
-    this.vx = vx;
-  }
-
-  @Override
-  public void setVY(int vy) {
-    this.vy = vy;
+  public void setVelocity(Velocity velocity) {
+    this.velocity = velocity;
   }
 
   @Override
@@ -88,24 +82,23 @@ class Ball implements jbreakout.common.Ball {
 
   @Override
   public void bounceX() {
-    vx = -vx;
+    this.velocity = velocity.negateVX();
   }
 
   @Override
   public void bounceY() {
-    vy = -vy;
+    this.velocity = velocity.negateVY();
   }
 
   @Override
   public void bounce() {
-    vx = -vx;
-    vy = -vy;
+    this.velocity = velocity.negate();
   }
 
   @Override
   public void move() {
-    x += vx;
-    y += vy;
+    x += velocity.vx();
+    y += velocity.vy();
   }
 
   @Override
