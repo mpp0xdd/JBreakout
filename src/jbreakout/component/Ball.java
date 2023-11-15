@@ -29,11 +29,6 @@ class Ball implements jbreakout.common.Ball {
   }
 
   @Override
-  public Color color() {
-    return Color.WHITE;
-  }
-
-  @Override
   public void setVX(int vx) {
     this.vx = vx;
   }
@@ -79,7 +74,7 @@ class Ball implements jbreakout.common.Ball {
       return;
     }
 
-    g.setColor(color());
+    g.setColor(Color.WHITE);
     g.fillOval(x, y, size(), size());
 
     if (isAccelerating) {

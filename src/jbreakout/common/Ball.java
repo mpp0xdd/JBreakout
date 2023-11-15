@@ -1,12 +1,8 @@
 package jbreakout.common;
 
-import java.awt.Color;
-
 public interface Ball extends Drawable {
 
   int size();
-
-  Color color();
 
   void setVX(int vx);
 
