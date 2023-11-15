@@ -58,11 +58,6 @@ class Brick implements jbreakout.common.Brick {
   }
 
   @Override
-  public void repair() {
-    eliminated = false;
-  }
-
-  @Override
   public void draw(Graphics g) {
     if (eliminated) {
       return;
