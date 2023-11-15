@@ -9,9 +9,7 @@ public final class Constants {
     // restrict instantiation
   }
 
-  public static final int SCREEN_WIDTH = 480;
-  public static final int SCREEN_HEIGHT = 640;
-
+  public static final int SCREEN_WIDTH = 480; // TODO: to be deleted
   public static final long GAME_LOOP_INTERVAL = 16;
   public static final long BALL_RELOCATION_INTERVAL = 3000;
 

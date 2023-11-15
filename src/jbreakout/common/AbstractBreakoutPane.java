@@ -9,8 +9,6 @@ import static jbreakout.common.Constants.CURRENT_TURN_DRAWING_AREA_Y;
 import static jbreakout.common.Constants.FONT_OF_DRAWING_STRING;
 import static jbreakout.common.Constants.GAME_ROUNDS;
 import static jbreakout.common.Constants.PLAYER_MAX_TURNS;
-import static jbreakout.common.Constants.SCREEN_HEIGHT;
-import static jbreakout.common.Constants.SCREEN_WIDTH;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -51,16 +49,16 @@ public abstract class AbstractBreakoutPane implements Drawable {
       ball.bounceX();
       ball.setX(0);
     }
-    if (ball.getX() + ball.size() > SCREEN_WIDTH) {
+    if (ball.getX() + ball.size() > width()) {
       ball.bounceX();
-      ball.setX(SCREEN_WIDTH - ball.size());
+      ball.setX(width() - ball.size());
     }
     if (ball.getY() < 0) {
       ball.bounceY();
       ball.setY(0);
     }
     // ボールをパドルで取りそこなったとき
-    if (ball.getY() > SCREEN_HEIGHT) {
+    if (ball.getY() > height()) {
       // fallClip.ifPresent(GameUtilities::playClip);
       ball.setVisible(false);
       if (currentTurn == PLAYER_MAX_TURNS) {
