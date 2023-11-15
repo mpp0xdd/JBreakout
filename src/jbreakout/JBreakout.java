@@ -12,6 +12,6 @@ public class JBreakout {
     gameWindow.setVisible(true);
     mainScreen.startGameLoop();
     mainScreen.playBGM();
-    mainScreen.activateBallRelocationTimer();
+    mainScreen.startRound();
   }
 }

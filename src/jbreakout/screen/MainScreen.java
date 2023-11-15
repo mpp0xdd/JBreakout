@@ -1,44 +1,13 @@
 package jbreakout.screen;
 
-import static jbreakout.common.Constants.BALL_INIT_Y;
-import static jbreakout.common.Constants.BALL_RELOCATION_INTERVAL;
-import static jbreakout.common.Constants.BRICKS_X;
-import static jbreakout.common.Constants.BRICKS_Y;
-import static jbreakout.common.Constants.COLOR_OF_DRAWING_STRING;
-import static jbreakout.common.Constants.CURRENT_ROUND_DRAWING_AREA_X;
-import static jbreakout.common.Constants.CURRENT_ROUND_DRAWING_AREA_Y;
-import static jbreakout.common.Constants.CURRENT_TURN_DRAWING_AREA_X;
-import static jbreakout.common.Constants.CURRENT_TURN_DRAWING_AREA_Y;
-import static jbreakout.common.Constants.FONT_OF_DRAWING_STRING;
 import static jbreakout.common.Constants.GAME_LOOP_INTERVAL;
-import static jbreakout.common.Constants.GAME_ROUNDS;
-import static jbreakout.common.Constants.PADDLE_INIT_X;
-import static jbreakout.common.Constants.PADDLE_INIT_Y;
-import static jbreakout.common.Constants.PLAYER_MAX_TURNS;
-import static jbreakout.common.Constants.RANDOM_BALL_VX;
-import static jbreakout.common.Constants.RANDOM_BALL_VY;
-import static jbreakout.common.Constants.RANDOM_BALL_X;
-import static jbreakout.common.Constants.SCREEN_HEIGHT;
-import static jbreakout.common.Constants.SCREEN_WIDTH;
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.util.Optional;
-import java.util.Timer;
-import java.util.TimerTask;
 import javax.sound.sampled.Clip;
-import jbreakout.common.AbstractBallFactory;
-import jbreakout.common.AbstractBrickFactory;
-import jbreakout.common.AbstractPaddleFactory;
-import jbreakout.common.Ball;
-import jbreakout.common.Brick;
-import jbreakout.common.Paddle;
-import jbreakout.common.Velocity;
-import jbreakout.component.BallFactory;
-import jbreakout.component.BrickFactory;
-import jbreakout.component.PaddleFactory;
+import jbreakout.common.AbstractBreakoutPane;
+import jbreakout.component.BreakoutPane;
 import jbreakout.resource.SoundFactory;
 import jglib.component.GameScreen;
 import jglib.util.GameUtilities;
@@ -48,28 +17,11 @@ public class MainScreen extends GameScreen {
   private final Optional<Clip> bgmClip = SoundFactory.mainScreenBgmClip();
   private final Optional<Clip> fallClip = SoundFactory.ballFallClip();
 
-  private final AbstractBrickFactory<?> brickFactory = new BrickFactory();
-  private final AbstractBallFactory<?> ballFactory = new BallFactory();
-  private final AbstractPaddleFactory<?> paddleFactory = new PaddleFactory();
-
-  private boolean isGameOver = false;
-  private int currentNumOfBricksEliminated = 0;
-  private int currentRound = 1;
-  private int currentScore = 0;
-  private int currentTurn = 1;
-  private int currentTotalScore = 0;
-
-  private Brick[] bricks = brickFactory.createBricks(new Point(BRICKS_X, BRICKS_Y));
-
-  private Ball ball =
-      ballFactory.createBall(
-          Velocity.of(RANDOM_BALL_VX.getAsInt(), RANDOM_BALL_VY.getAsInt()),
-          new Point(RANDOM_BALL_X.getAsInt(), BALL_INIT_Y));
-
-  private Paddle paddle = paddleFactory.createPaddle(new Point(PADDLE_INIT_X, PADDLE_INIT_Y));
+  private final AbstractBreakoutPane breakoutPane = new BreakoutPane();
 
   public MainScreen() {
-    super(SCREEN_WIDTH, SCREEN_HEIGHT);
+    breakoutPane.initializeComponent();
+    setScreenSize(breakoutPane.width(), breakoutPane.height());
     setGameLoopInterval(GAME_LOOP_INTERVAL);
 
     addMouseMotionListener(
@@ -77,10 +29,7 @@ public class MainScreen extends GameScreen {
           @Override
           public void mouseMoved(MouseEvent e) {
             int x = e.getX();
-            int halfWidthOfPaddle = paddle.width() / 2;
-            if (halfWidthOfPaddle <= x && x <= SCREEN_WIDTH - halfWidthOfPaddle) {
-              paddle.setX(x - halfWidthOfPaddle);
-            }
+            breakoutPane.movePaddle(x);
           }
         });
   }
@@ -89,128 +38,19 @@ public class MainScreen extends GameScreen {
     bgmClip.ifPresent(GameUtilities::repeatClip);
   }
 
-  public void activateBallRelocationTimer() {
-    ball =
-        ballFactory.createBall(
-            Velocity.of(RANDOM_BALL_VX.getAsInt(), RANDOM_BALL_VY.getAsInt()),
-            new Point(RANDOM_BALL_X.getAsInt(), BALL_INIT_Y));
-
-    Timer ballRelocationTimer = new Timer();
-    ballRelocationTimer.schedule(
-        new TimerTask() {
-          @Override
-          public void run() {
-            ball.setVisible(true);
-            ballRelocationTimer.cancel();
-          }
-        },
-        BALL_RELOCATION_INTERVAL);
+  public void startRound() {
+    breakoutPane.startRound();
   }
 
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
-
-    g.setColor(Color.BLACK);
-    g.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-    g.setColor(COLOR_OF_DRAWING_STRING);
-    g.setFont(FONT_OF_DRAWING_STRING);
-    GameUtilities.drawString(
-        g,
-        CURRENT_ROUND_DRAWING_AREA_X,
-        CURRENT_ROUND_DRAWING_AREA_Y,
-        String.valueOf(currentRound),
-        String.format(" %03d", currentScore));
-    GameUtilities.drawStringFromTopRight(
-        g,
-        CURRENT_TURN_DRAWING_AREA_X,
-        CURRENT_TURN_DRAWING_AREA_Y,
-        String.format("%d     ", currentTurn),
-        String.format(" %03d", currentTotalScore));
-
-    for (Brick brick : bricks) {
-      brick.draw(g);
-    }
-
-    ball.draw(g);
-
-    paddle.draw(g);
-
-    if (isGameOver) {
-      g.setColor(COLOR_OF_DRAWING_STRING);
-      g.setFont(FONT_OF_DRAWING_STRING);
-      GameUtilities.drawStringAfterCentering(g, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, "Game Over!");
-    }
+    breakoutPane.draw(g);
   }
 
   @Override
   protected void runGameLoop() {
-    if (!ball.isVisible()) {
-      repaint();
-      return;
-    }
-
-    ball.move();
-    if (ball.getX() < 0) {
-      ball.bounceX();
-      ball.setX(0);
-    }
-    if (ball.getX() + ball.size() > SCREEN_WIDTH) {
-      ball.bounceX();
-      ball.setX(SCREEN_WIDTH - ball.size());
-    }
-    if (ball.getY() < 0) {
-      ball.bounceY();
-      ball.setY(0);
-    }
-    // ボールをパドルで取りそこなったとき
-    if (ball.getY() > SCREEN_HEIGHT) {
-      fallClip.ifPresent(GameUtilities::playClip);
-      ball.setVisible(false);
-      if (currentTurn == PLAYER_MAX_TURNS) {
-        stopGameLoop();
-        isGameOver = true;
-      } else {
-        currentTurn++;
-        activateBallRelocationTimer();
-      }
-      repaint();
-      return;
-    }
-
-    paddle.rebound(ball);
-
-    for (Brick brick : bricks) {
-      if (brick.rebound(ball) != ball) {
-        continue;
-      }
-
-      currentScore += brick.score();
-      brick.eliminate();
-      currentNumOfBricksEliminated++;
-      if (currentNumOfBricksEliminated == bricks.length) {
-        currentTotalScore += currentScore;
-        if (currentRound == GAME_ROUNDS) {
-          stopGameLoop();
-          isGameOver = true;
-        } else {
-          currentRound++;
-          activateBallRelocationTimer();
-          repair(bricks);
-          currentScore = 0;
-          currentNumOfBricksEliminated = 0;
-        }
-      }
-      break;
-    }
-
+    breakoutPane.update();
     repaint();
-  }
-
-  private void repair(Brick[] bricks) {
-    for (Brick brick : bricks) {
-      brick.repair();
-    }
   }
 }

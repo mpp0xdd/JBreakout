@@ -3,7 +3,6 @@ package jbreakout.component;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import jbreakout.common.Constants;
 import jbreakout.common.Velocity;
 
 class Ball implements jbreakout.common.Ball {
@@ -19,7 +18,7 @@ class Ball implements jbreakout.common.Ball {
 
   @Override
   public int size() {
-    return Constants.BALL_SIZE;
+    return 10;
   }
 
   @Override
