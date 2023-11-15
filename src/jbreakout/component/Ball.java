@@ -17,18 +17,9 @@ class Ball implements jbreakout.common.Ball {
     this.location = location.getLocation();
   }
 
-  public Ball() {
-    this(Velocity.ZERO, new Point());
-  }
-
   @Override
   public int size() {
     return Constants.BALL_SIZE;
-  }
-
-  @Override
-  public void setVelocity(Velocity velocity) {
-    this.velocity = velocity;
   }
 
   @Override
@@ -49,11 +40,6 @@ class Ball implements jbreakout.common.Ball {
   @Override
   public void setY(int y) {
     location.y = y;
-  }
-
-  @Override
-  public void setLocation(Point location) {
-    this.location.setLocation(location);
   }
 
   @Override

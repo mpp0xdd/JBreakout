@@ -15,10 +15,6 @@ class SoundBall extends Ball {
     super(velocity, location);
   }
 
-  public SoundBall() {
-    super();
-  }
-
   @Override
   public void bounceX() {
     super.bounceX();

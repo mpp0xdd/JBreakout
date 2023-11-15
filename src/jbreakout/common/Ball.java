@@ -1,12 +1,8 @@
 package jbreakout.common;
 
-import java.awt.Point;
-
 public interface Ball extends Drawable {
 
   int size();
-
-  void setVelocity(Velocity velocity);
 
   int getX();
 
@@ -15,8 +11,6 @@ public interface Ball extends Drawable {
   int getY();
 
   void setY(int y);
-
-  void setLocation(Point location);
 
   boolean isVisible();
 

@@ -61,7 +61,10 @@ public class MainScreen extends GameScreen {
 
   private Brick[] bricks = brickFactory.createBricks(new Point(BRICKS_X, BRICKS_Y));
 
-  private Ball ball = ballFactory.createBall();
+  private Ball ball =
+      ballFactory.createBall(
+          Velocity.of(RANDOM_BALL_VX.getAsInt(), RANDOM_BALL_VY.getAsInt()),
+          new Point(RANDOM_BALL_X.getAsInt(), BALL_INIT_Y));
 
   private Paddle paddle = paddleFactory.createPaddle(new Point(PADDLE_INIT_X, PADDLE_INIT_Y));
 
@@ -87,9 +90,10 @@ public class MainScreen extends GameScreen {
   }
 
   public void activateBallRelocationTimer() {
-    ball.setVisible(false);
-    ball.setVelocity(Velocity.of(RANDOM_BALL_VX.getAsInt(), RANDOM_BALL_VY.getAsInt()));
-    ball.setLocation(new Point(RANDOM_BALL_X.getAsInt(), BALL_INIT_Y));
+    ball =
+        ballFactory.createBall(
+            Velocity.of(RANDOM_BALL_VX.getAsInt(), RANDOM_BALL_VY.getAsInt()),
+            new Point(RANDOM_BALL_X.getAsInt(), BALL_INIT_Y));
 
     Timer ballRelocationTimer = new Timer();
     ballRelocationTimer.schedule(
