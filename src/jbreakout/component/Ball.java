@@ -2,24 +2,23 @@ package jbreakout.component;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import jbreakout.common.Constants;
 import jbreakout.common.Velocity;
 
 class Ball implements jbreakout.common.Ball {
   private Velocity velocity;
-  private int x;
-  private int y;
+  private final Point location;
   private boolean isAccelerating = false;
   private boolean visible = false;
 
-  public Ball(Velocity velocity, int x, int y) {
+  public Ball(Velocity velocity, Point location) {
     this.velocity = velocity;
-    this.x = x;
-    this.y = y;
+    this.location = location.getLocation();
   }
 
   public Ball() {
-    this(Velocity.ZERO, 0, 0);
+    this(Velocity.ZERO, new Point());
   }
 
   @Override
@@ -34,22 +33,27 @@ class Ball implements jbreakout.common.Ball {
 
   @Override
   public int getX() {
-    return x;
+    return location.x;
   }
 
   @Override
   public void setX(int x) {
-    this.x = x;
+    location.x = x;
   }
 
   @Override
   public int getY() {
-    return y;
+    return location.y;
   }
 
   @Override
   public void setY(int y) {
-    this.y = y;
+    location.y = y;
+  }
+
+  @Override
+  public void setLocation(Point location) {
+    this.location.setLocation(location);
   }
 
   @Override
@@ -69,12 +73,12 @@ class Ball implements jbreakout.common.Ball {
     }
 
     g.setColor(Color.WHITE);
-    g.fillOval(x, y, size(), size());
+    g.fillOval(location.x, location.y, size(), size());
 
     if (isAccelerating) {
       for (int i = 0; i < acceleration(); i++) {
         move();
-        g.fillOval(x, y, size(), size());
+        g.fillOval(location.x, location.y, size(), size());
       }
       isAccelerating = false;
     }
@@ -97,8 +101,7 @@ class Ball implements jbreakout.common.Ball {
 
   @Override
   public void move() {
-    x += velocity.vx();
-    y += velocity.vy();
+    location.translate(velocity.vx(), velocity.vy());
   }
 
   @Override
