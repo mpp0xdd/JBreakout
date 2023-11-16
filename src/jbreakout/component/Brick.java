@@ -43,6 +43,16 @@ class Brick implements jbreakout.common.Brick {
   }
 
   @Override
+  public int x() {
+    return x;
+  }
+
+  @Override
+  public int y() {
+    return y;
+  }
+
+  @Override
   public int width() {
     return width;
   }
