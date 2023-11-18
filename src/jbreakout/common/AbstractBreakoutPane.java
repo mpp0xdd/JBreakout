@@ -3,6 +3,9 @@ package jbreakout.common;
 import java.awt.Point;
 import java.util.Timer;
 import java.util.TimerTask;
+import jbreakout.factory.AbstractBallFactory;
+import jbreakout.factory.AbstractBrickFactory;
+import jbreakout.factory.AbstractPaddleFactory;
 
 public abstract class AbstractBreakoutPane implements Drawable {
 

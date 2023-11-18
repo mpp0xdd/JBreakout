@@ -1,6 +1,7 @@
-package jbreakout.common;
+package jbreakout.factory;
 
 import java.awt.Point;
+import jbreakout.common.Paddle;
 
 public abstract class AbstractPaddleFactory<T extends Paddle> {
   public abstract T createPaddle(Point point);

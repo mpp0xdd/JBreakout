@@ -6,7 +6,7 @@ import static java.awt.Color.RED;
 import static java.awt.Color.YELLOW;
 import java.awt.Color;
 import java.awt.Point;
-import jbreakout.common.AbstractBrickFactory;
+import jbreakout.factory.AbstractBrickFactory;
 
 public class BrickFactory extends AbstractBrickFactory<SoundBrick> {
 
@@ -33,27 +33,27 @@ public class BrickFactory extends AbstractBrickFactory<SoundBrick> {
   }
 
   @Override
-  protected int rows() {
+  public int rows() {
     return 8;
   }
 
   @Override
-  protected int columns() {
+  public int columns() {
     return 14;
   }
 
   @Override
-  protected int width() {
+  public int width() {
     return 30;
   }
 
   @Override
-  protected int height() {
+  public int height() {
     return 10;
   }
 
   @Override
-  protected int margin() {
+  public int margin() {
     return 4;
   }
 }

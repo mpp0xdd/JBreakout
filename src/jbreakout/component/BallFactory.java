@@ -1,8 +1,8 @@
 package jbreakout.component;
 
 import java.awt.Point;
-import jbreakout.common.AbstractBallFactory;
 import jbreakout.common.Velocity;
+import jbreakout.factory.AbstractBallFactory;
 
 public class BallFactory extends AbstractBallFactory<SoundBall> {
 

@@ -11,12 +11,12 @@ import static jbreakout.common.Constants.PLAYER_MAX_TURNS;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import jbreakout.common.AbstractBallFactory;
 import jbreakout.common.AbstractBreakoutPane;
-import jbreakout.common.AbstractBrickFactory;
-import jbreakout.common.AbstractPaddleFactory;
 import jbreakout.common.Brick;
 import jbreakout.common.Velocity;
+import jbreakout.factory.AbstractBallFactory;
+import jbreakout.factory.AbstractBrickFactory;
+import jbreakout.factory.AbstractPaddleFactory;
 import jglib.util.GameUtilities;
 
 public class BreakoutPane extends AbstractBreakoutPane {
