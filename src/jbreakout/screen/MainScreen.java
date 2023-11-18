@@ -2,6 +2,7 @@ package jbreakout.screen;
 
 import static jbreakout.common.Constants.GAME_LOOP_INTERVAL;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.util.Optional;
@@ -17,7 +18,7 @@ public class MainScreen extends GameScreen {
   private final Optional<Clip> bgmClip = SoundFactory.mainScreenBgmClip();
   private final Optional<Clip> fallClip = SoundFactory.ballFallClip();
 
-  private final AbstractBreakoutPane breakoutPane = new BreakoutPane();
+  private final AbstractBreakoutPane breakoutPane = new BreakoutPane(new Point());
 
   public MainScreen() {
     breakoutPane.initializeComponent();

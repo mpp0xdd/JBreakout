@@ -1,17 +1,38 @@
 package jbreakout.common;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.Timer;
 import java.util.TimerTask;
 import jbreakout.factory.AbstractBallFactory;
 import jbreakout.factory.AbstractBrickFactory;
 import jbreakout.factory.AbstractPaddleFactory;
 
-public abstract class AbstractBreakoutPane implements Drawable {
+public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
 
+  private final Point point;
   private Brick[] bricks;
   private Ball ball;
   private Paddle paddle;
+
+  public AbstractBreakoutPane(Point point) {
+    this.point = point.getLocation();
+  }
+
+  @Override
+  public Rectangle asRectangle() {
+    return new Rectangle(x(), y(), width(), height());
+  }
+
+  @Override
+  public int x() {
+    return point.x;
+  }
+
+  @Override
+  public int y() {
+    return point.y;
+  }
 
   public void initializeComponent() {
     this.bricks = brickFactory().createBricks(bricksPoint());
@@ -58,10 +79,6 @@ public abstract class AbstractBreakoutPane implements Drawable {
   }
 
   public abstract void update();
-
-  public abstract int width();
-
-  public abstract int height();
 
   protected abstract long roundInterval();
 
