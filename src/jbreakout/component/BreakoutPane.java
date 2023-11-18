@@ -131,6 +131,11 @@ public class BreakoutPane extends AbstractBreakoutPane {
   }
 
   @Override
+  protected long roundInterval() {
+    return 3000L;
+  }
+
+  @Override
   protected Velocity ballVelocity() {
     final int vx = (5 + (int) ((5 + 1) * Math.random())) * (Math.random() >= 0.5 ? 1 : -1);
     final int vy = 5 + (int) ((5 + 1) * Math.random());

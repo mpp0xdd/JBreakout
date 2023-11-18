@@ -1,6 +1,5 @@
 package jbreakout.common;
 
-import static jbreakout.common.Constants.BALL_RELOCATION_INTERVAL;
 import java.awt.Point;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -52,7 +51,7 @@ public abstract class AbstractBreakoutPane implements Drawable {
             roundTimer.cancel();
           }
         },
-        BALL_RELOCATION_INTERVAL);
+        roundInterval());
   }
 
   public abstract void update();
@@ -60,6 +59,8 @@ public abstract class AbstractBreakoutPane implements Drawable {
   public abstract int width();
 
   public abstract int height();
+
+  protected abstract long roundInterval();
 
   protected abstract Velocity ballVelocity();
 

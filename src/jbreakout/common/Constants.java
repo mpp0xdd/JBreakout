@@ -11,7 +11,6 @@ public final class Constants {
 
   public static final int SCREEN_WIDTH = 480; // TODO: to be deleted
   public static final long GAME_LOOP_INTERVAL = 16;
-  public static final long BALL_RELOCATION_INTERVAL = 3000;
 
   public static final int PLAYER_MAX_TURNS = 3;
   public static final int GAME_ROUNDS = 2;
