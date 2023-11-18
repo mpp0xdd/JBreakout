@@ -6,6 +6,7 @@ import java.awt.Point;
 import jbreakout.common.Velocity;
 
 class Ball implements jbreakout.common.Ball {
+
   private Velocity velocity;
   private final Point location;
   private final int size;

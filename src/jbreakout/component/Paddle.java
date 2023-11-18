@@ -5,6 +5,7 @@ import java.awt.Point;
 import jbreakout.common.Ball;
 
 class Paddle extends Brick implements jbreakout.common.Paddle {
+
   public Paddle(Point point, int width, int height) {
     super(Color.BLUE, width, height, point.x, point.y);
   }

@@ -19,20 +19,11 @@ public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
     this.point = point.getLocation();
   }
 
-  @Override
-  public Rectangle asRectangle() {
-    return new Rectangle(x(), y(), width(), height());
-  }
+  public abstract void update();
 
-  @Override
-  public int x() {
-    return point.x;
-  }
+  public abstract int maxTurns();
 
-  @Override
-  public int y() {
-    return point.y;
-  }
+  public abstract int maxRounds();
 
   public void initializeComponent() {
     this.bricks = brickFactory().createBricks(bricksPoint());
@@ -50,6 +41,21 @@ public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
     if (halfWidthOfPaddle <= x && x <= width() - halfWidthOfPaddle) {
       paddle.setX(x - halfWidthOfPaddle);
     }
+  }
+
+  @Override
+  public Rectangle asRectangle() {
+    return new Rectangle(x(), y(), width(), height());
+  }
+
+  @Override
+  public int x() {
+    return point.x;
+  }
+
+  @Override
+  public int y() {
+    return point.y;
   }
 
   protected Brick[] bricks() {
@@ -77,12 +83,6 @@ public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
         },
         roundInterval());
   }
-
-  public abstract int maxTurns();
-
-  public abstract int maxRounds();
-
-  public abstract void update();
 
   protected abstract long roundInterval();
 
