@@ -78,6 +78,10 @@ public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
         roundInterval());
   }
 
+  public abstract int maxTurns();
+
+  public abstract int maxRounds();
+
   public abstract void update();
 
   protected abstract long roundInterval();

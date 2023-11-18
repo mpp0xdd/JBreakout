@@ -6,8 +6,6 @@ import static jbreakout.common.Constants.CURRENT_ROUND_DRAWING_AREA_Y;
 import static jbreakout.common.Constants.CURRENT_TURN_DRAWING_AREA_X;
 import static jbreakout.common.Constants.CURRENT_TURN_DRAWING_AREA_Y;
 import static jbreakout.common.Constants.FONT_OF_DRAWING_STRING;
-import static jbreakout.common.Constants.GAME_ROUNDS;
-import static jbreakout.common.Constants.PLAYER_MAX_TURNS;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -55,7 +53,7 @@ public class BreakoutPane extends AbstractBreakoutPane {
     if (ball().getY() > height()) {
       // fallClip.ifPresent(GameUtilities::playClip);
       ball().setVisible(false);
-      if (currentTurn == PLAYER_MAX_TURNS) {
+      if (currentTurn == maxTurns()) {
         isGameOver = true;
       } else {
         currentTurn++;
@@ -76,7 +74,7 @@ public class BreakoutPane extends AbstractBreakoutPane {
       currentNumOfBricksEliminated++;
       if (currentNumOfBricksEliminated == bricks().length) {
         currentTotalScore += currentScore;
-        if (currentRound == GAME_ROUNDS) {
+        if (currentRound == maxRounds()) {
           isGameOver = true;
         } else {
           currentRound++;
@@ -122,6 +120,16 @@ public class BreakoutPane extends AbstractBreakoutPane {
       g.setFont(FONT_OF_DRAWING_STRING);
       GameUtilities.drawStringAfterCentering(g, width() / 2, height() / 2, "Game Over!");
     }
+  }
+
+  @Override
+  public int maxTurns() {
+    return 3;
+  }
+
+  @Override
+  public int maxRounds() {
+    return 2;
   }
 
   @Override

@@ -12,9 +12,6 @@ public final class Constants {
   public static final int SCREEN_WIDTH = 480; // TODO: to be deleted
   public static final long GAME_LOOP_INTERVAL = 16;
 
-  public static final int PLAYER_MAX_TURNS = 3;
-  public static final int GAME_ROUNDS = 2;
-
   public static final int CURRENT_ROUND_DRAWING_AREA_X = 10;
   public static final int CURRENT_ROUND_DRAWING_AREA_Y = 0;
   public static final int CURRENT_TURN_DRAWING_AREA_X = SCREEN_WIDTH - CURRENT_ROUND_DRAWING_AREA_X;
