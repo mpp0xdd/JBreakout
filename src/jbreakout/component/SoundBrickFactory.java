@@ -8,7 +8,7 @@ import java.awt.Color;
 import java.awt.Point;
 import jbreakout.factory.AbstractBrickFactory;
 
-public class BrickFactory extends AbstractBrickFactory<SoundBrick> {
+public class SoundBrickFactory extends AbstractBrickFactory<SoundBrick> {
 
   private static final Color[] COLORS = {RED, RED, ORANGE, ORANGE, GREEN, GREEN, YELLOW, YELLOW};
 

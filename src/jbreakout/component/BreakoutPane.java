@@ -166,16 +166,16 @@ public class BreakoutPane extends AbstractBreakoutPane {
 
   @Override
   protected AbstractBrickFactory<?> brickFactory() {
-    return new BrickFactory();
+    return new SoundBrickFactory();
   }
 
   @Override
   protected AbstractBallFactory<?> ballFactory() {
-    return new BallFactory();
+    return new SoundBallFactory();
   }
 
   @Override
   protected AbstractPaddleFactory<?> paddleFactory() {
-    return new PaddleFactory();
+    return new SoundPaddleFactory();
   }
 }
