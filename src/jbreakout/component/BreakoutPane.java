@@ -14,15 +14,6 @@ import jglib.util.GameUtilities;
 
 public class BreakoutPane extends AbstractBreakoutPane {
 
-  private static final int SCREEN_WIDTH = 480; // TODO: to be deleted
-  private static final int CURRENT_ROUND_DRAWING_AREA_X = 10;
-  private static final int CURRENT_ROUND_DRAWING_AREA_Y = 0;
-  private static final int CURRENT_TURN_DRAWING_AREA_X =
-      SCREEN_WIDTH - CURRENT_ROUND_DRAWING_AREA_X;
-  private static final int CURRENT_TURN_DRAWING_AREA_Y = CURRENT_ROUND_DRAWING_AREA_Y;
-  private static final Color COLOR_OF_DRAWING_STRING = Color.WHITE;
-  private static final Font FONT_OF_DRAWING_STRING = new Font(Font.SANS_SERIF, Font.BOLD, 43);
-
   private boolean isGameOver = false;
   private int bricksEliminated = 0;
   private int round = 1;
@@ -96,20 +87,10 @@ public class BreakoutPane extends AbstractBreakoutPane {
     g.setColor(Color.BLACK);
     g.fillRect(0, 0, width(), height());
 
-    g.setColor(COLOR_OF_DRAWING_STRING);
-    g.setFont(FONT_OF_DRAWING_STRING);
-    GameUtilities.drawString(
-        g,
-        CURRENT_ROUND_DRAWING_AREA_X,
-        CURRENT_ROUND_DRAWING_AREA_Y,
-        String.valueOf(round),
-        String.format(" %03d", score));
+    prepareToDrawString(g);
+    GameUtilities.drawString(g, 10, 0, String.valueOf(round), String.format(" %03d", score));
     GameUtilities.drawStringFromTopRight(
-        g,
-        CURRENT_TURN_DRAWING_AREA_X,
-        CURRENT_TURN_DRAWING_AREA_Y,
-        String.format("%d     ", turn),
-        String.format(" %03d", totalScore));
+        g, width() - 10, 0, String.format("%d     ", turn), String.format(" %03d", totalScore));
 
     for (Brick brick : bricks()) {
       brick.draw(g);
@@ -120,8 +101,7 @@ public class BreakoutPane extends AbstractBreakoutPane {
     paddle().draw(g);
 
     if (isGameOver) {
-      g.setColor(COLOR_OF_DRAWING_STRING);
-      g.setFont(FONT_OF_DRAWING_STRING);
+      prepareToDrawString(g);
       GameUtilities.drawStringAfterCentering(g, width() / 2, height() / 2, "Game Over!");
     }
   }
@@ -181,5 +161,10 @@ public class BreakoutPane extends AbstractBreakoutPane {
   @Override
   protected AbstractPaddleFactory<?> paddleFactory() {
     return new SoundPaddleFactory();
+  }
+
+  private void prepareToDrawString(Graphics g) {
+    g.setColor(Color.WHITE);
+    g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 43));
   }
 }
