@@ -92,12 +92,8 @@ public class BreakoutPane extends AbstractBreakoutPane {
     GameUtilities.drawStringFromTopRight(
         g, width() - 10, 0, String.format("%d     ", turn), String.format(" %03d", totalScore));
 
-    for (Brick brick : bricks()) {
-      brick.draw(g);
-    }
-
+    for (Brick brick : bricks()) brick.draw(g);
     ball().draw(g);
-
     paddle().draw(g);
 
     if (isGameOver) {
