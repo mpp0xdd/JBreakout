@@ -123,16 +123,6 @@ public class BreakoutPane extends AbstractBreakoutPane {
   }
 
   @Override
-  public int maxTurns() {
-    return 3;
-  }
-
-  @Override
-  public int maxRounds() {
-    return 2;
-  }
-
-  @Override
   public int width() {
     return 480;
   }
@@ -140,6 +130,16 @@ public class BreakoutPane extends AbstractBreakoutPane {
   @Override
   public int height() {
     return 640;
+  }
+
+  @Override
+  protected int maxTurns() {
+    return 3;
+  }
+
+  @Override
+  protected int maxRounds() {
+    return 2;
   }
 
   @Override

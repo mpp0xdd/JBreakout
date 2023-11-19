@@ -21,10 +21,6 @@ public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
 
   public abstract void update();
 
-  public abstract int maxTurns();
-
-  public abstract int maxRounds();
-
   public void initializeComponent() {
     this.bricks = brickFactory().createBricks(bricksPoint());
     this.ball = ballFactory().createBall(ballVelocity(), ballPoint());
@@ -83,6 +79,10 @@ public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
         },
         roundInterval());
   }
+
+  protected abstract int maxTurns();
+
+  protected abstract int maxRounds();
 
   protected abstract long roundInterval();
 
