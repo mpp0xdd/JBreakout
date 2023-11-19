@@ -20,11 +20,11 @@ import jglib.util.GameUtilities;
 public class BreakoutPane extends AbstractBreakoutPane {
 
   private boolean isGameOver = false;
-  private int currentNumOfBricksEliminated = 0;
-  private int currentRound = 1;
-  private int currentScore = 0;
-  private int currentTurn = 1;
-  private int currentTotalScore = 0;
+  private int bricksEliminated = 0;
+  private int round = 1;
+  private int score = 0;
+  private int turn = 1;
+  private int totalScore = 0;
 
   public BreakoutPane(Point point) {
     super(point);
@@ -53,10 +53,10 @@ public class BreakoutPane extends AbstractBreakoutPane {
     if (ball().getY() > height()) {
       // fallClip.ifPresent(GameUtilities::playClip);
       ball().setVisible(false);
-      if (currentTurn == maxTurns()) {
+      if (turn == maxTurns()) {
         isGameOver = true;
       } else {
-        currentTurn++;
+        turn++;
         relocateBall();
       }
       return;
@@ -69,17 +69,17 @@ public class BreakoutPane extends AbstractBreakoutPane {
         continue;
       }
 
-      currentScore += brick.score();
+      score += brick.score();
       brick.eliminate();
-      currentNumOfBricksEliminated++;
-      if (currentNumOfBricksEliminated == bricks().length) {
-        currentTotalScore += currentScore;
-        if (currentRound == maxRounds()) {
+      bricksEliminated++;
+      if (bricksEliminated == bricks().length) {
+        totalScore += score;
+        if (round == maxRounds()) {
           isGameOver = true;
         } else {
-          currentRound++;
-          currentScore = 0;
-          currentNumOfBricksEliminated = 0;
+          round++;
+          score = 0;
+          bricksEliminated = 0;
           startRound();
         }
       }
@@ -98,14 +98,14 @@ public class BreakoutPane extends AbstractBreakoutPane {
         g,
         CURRENT_ROUND_DRAWING_AREA_X,
         CURRENT_ROUND_DRAWING_AREA_Y,
-        String.valueOf(currentRound),
-        String.format(" %03d", currentScore));
+        String.valueOf(round),
+        String.format(" %03d", score));
     GameUtilities.drawStringFromTopRight(
         g,
         CURRENT_TURN_DRAWING_AREA_X,
         CURRENT_TURN_DRAWING_AREA_Y,
-        String.format("%d     ", currentTurn),
-        String.format(" %03d", currentTotalScore));
+        String.format("%d     ", turn),
+        String.format(" %03d", totalScore));
 
     for (Brick brick : bricks()) {
       brick.draw(g);
