@@ -33,9 +33,16 @@ public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
   }
 
   public void movePaddle(int x) {
-    int halfWidthOfPaddle = paddle.width() / 2;
-    if (halfWidthOfPaddle <= x && x <= width() - halfWidthOfPaddle) {
-      paddle.setX(x - halfWidthOfPaddle);
+    final Rectangle thisRect = asRectangle();
+
+    if (!thisRect.contains(x, y())) {
+      return;
+    }
+
+    final int backup = paddle.x();
+    paddle.setX(x - paddle.width() / 2);
+    if (!thisRect.contains(paddle.asRectangle())) {
+      paddle.setX(backup);
     }
   }
 
