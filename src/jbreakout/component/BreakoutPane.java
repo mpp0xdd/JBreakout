@@ -140,6 +140,19 @@ public class BreakoutPane extends AbstractBreakoutPane {
   }
 
   @Override
+  protected Point ballPoint() {
+    final int x = (int) ((width() - ballFactory().size()) * Math.random());
+
+    final int bricksY = bricksPoint().y;
+    final int numOfBrickRows = brickFactory().rows();
+    final int brickHeight = brickFactory().height();
+    final int bricksMargin = brickFactory().margin();
+    final int y = bricksY + numOfBrickRows * (brickHeight + bricksMargin);
+
+    return new Point(x, y);
+  }
+
+  @Override
   protected Point paddlePoint() {
     return new Point(width() / 2 - paddleFactory().width() / 2, 580);
   }

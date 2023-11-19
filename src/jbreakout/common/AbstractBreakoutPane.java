@@ -97,6 +97,8 @@ public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
 
   protected abstract Point bricksPoint();
 
+  protected abstract Point ballPoint();
+
   protected abstract Point paddlePoint();
 
   protected abstract AbstractBrickFactory<?> brickFactory();
@@ -104,16 +106,4 @@ public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
   protected abstract AbstractBallFactory<?> ballFactory();
 
   protected abstract AbstractPaddleFactory<?> paddleFactory();
-
-  private Point ballPoint() {
-    final int x = (int) ((width() - ballFactory().size()) * Math.random());
-
-    final int bricksY = bricksPoint().y;
-    final int numOfBrickRows = brickFactory().rows();
-    final int brickHeight = brickFactory().height();
-    final int bricksMargin = brickFactory().margin();
-    final int y = bricksY + numOfBrickRows * (brickHeight + bricksMargin);
-
-    return new Point(x, y);
-  }
 }
