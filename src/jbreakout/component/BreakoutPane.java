@@ -10,6 +10,7 @@ import jbreakout.common.Velocity;
 import jbreakout.factory.AbstractBallFactory;
 import jbreakout.factory.AbstractBrickFactory;
 import jbreakout.factory.AbstractPaddleFactory;
+import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
 
 public class BreakoutPane extends AbstractBreakoutPane {
@@ -42,7 +43,7 @@ public class BreakoutPane extends AbstractBreakoutPane {
     }
     // ボールをパドルで取りそこなったとき
     if (ball().getY() > height()) {
-      // fallClip.ifPresent(GameUtilities::playClip);
+      SoundFactory.ballFallClip().ifPresent(GameUtilities::playClip);
       ball().setVisible(false);
       if (turn == maxTurns()) {
         isGameOver = true;

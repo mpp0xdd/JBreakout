@@ -4,8 +4,6 @@ import static jbreakout.common.Constants.GAME_LOOP_INTERVAL;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.util.Optional;
-import javax.sound.sampled.Clip;
 import jbreakout.common.AbstractBreakoutPane;
 import jbreakout.component.BreakoutPane;
 import jbreakout.resource.SoundFactory;
@@ -13,9 +11,6 @@ import jglib.component.GameScreen;
 import jglib.util.GameUtilities;
 
 public class MainScreen extends GameScreen {
-
-  private final Optional<Clip> bgmClip = SoundFactory.mainScreenBgmClip();
-  private final Optional<Clip> fallClip = SoundFactory.ballFallClip();
 
   private final AbstractBreakoutPane breakoutPane = new BreakoutPane();
 
@@ -35,7 +30,7 @@ public class MainScreen extends GameScreen {
   }
 
   public void playBGM() {
-    bgmClip.ifPresent(GameUtilities::repeatClip);
+    SoundFactory.mainScreenBgmClip().ifPresent(GameUtilities::repeatClip);
   }
 
   public void startRound() {

@@ -10,36 +10,50 @@ public final class SoundFactory {
     // restrict instantiation
   }
 
-  public static Optional<Clip> mainScreenBgmClip() {
-    Optional<Clip> clip = GameUtilities.loadClip(SoundFactory.class.getResource("sounds/bgm.wav"));
+  private static final Clip MAIN_SCREEN_BGM;
+  private static final Clip BALL_FALL;
+  private static final Clip BALL_BOUNCE;
+  private static final Clip PADDLE_REBOUND;
+
+  static {
+    Optional<Clip> clip;
+
+    clip = GameUtilities.loadClip(SoundFactory.class.getResource("sounds/bgm.wav"));
     clip.ifPresent(c -> GameUtilities.setVolume(c, 0.7f));
-    return clip;
+    MAIN_SCREEN_BGM = clip.orElse(null);
+
+    clip = GameUtilities.loadClip(SoundFactory.class.getResource("sounds/ball_fall.wav"));
+    clip.ifPresent(c -> GameUtilities.setVolume(c, 0.7f));
+    BALL_FALL = clip.orElse(null);
+
+    clip = GameUtilities.loadClip(SoundFactory.class.getResource("sounds/ball_bounce.wav"));
+    clip.ifPresent(c -> GameUtilities.setVolume(c, 0.75f));
+    BALL_BOUNCE = clip.orElse(null);
+
+    clip = GameUtilities.loadClip(SoundFactory.class.getResource("sounds/paddle_rebound.wav"));
+    clip.ifPresent(c -> GameUtilities.setVolume(c, 0.75f));
+    PADDLE_REBOUND = clip.orElse(null);
+  }
+
+  public static Optional<Clip> mainScreenBgmClip() {
+    return Optional.ofNullable(MAIN_SCREEN_BGM);
   }
 
   public static Optional<Clip> ballFallClip() {
-    Optional<Clip> clip =
-        GameUtilities.loadClip(SoundFactory.class.getResource("sounds/ball_fall.wav"));
-    clip.ifPresent(c -> GameUtilities.setVolume(c, 0.7f));
-    return clip;
+    return Optional.ofNullable(BALL_FALL);
   }
 
   public static Optional<Clip> ballBounceClip() {
-    Optional<Clip> clip =
-        GameUtilities.loadClip(SoundFactory.class.getResource("sounds/ball_bounce.wav"));
-    clip.ifPresent(c -> GameUtilities.setVolume(c, 0.75f));
-    return clip;
-  }
-
-  public static Optional<Clip> brickEliminateClip() {
-    Optional<Clip> clip =
-        GameUtilities.loadClip(SoundFactory.class.getResource("sounds/brick_eliminate.wav"));
-    clip.ifPresent(c -> GameUtilities.setVolume(c, 0.75f));
-    return clip;
+    return Optional.ofNullable(BALL_BOUNCE);
   }
 
   public static Optional<Clip> paddleReboundClip() {
+    return Optional.ofNullable(PADDLE_REBOUND);
+  }
+
+  public static Optional<Clip> newBrickEliminateClip() {
     Optional<Clip> clip =
-        GameUtilities.loadClip(SoundFactory.class.getResource("sounds/paddle_rebound.wav"));
+        GameUtilities.loadClip(SoundFactory.class.getResource("sounds/brick_eliminate.wav"));
     clip.ifPresent(c -> GameUtilities.setVolume(c, 0.75f));
     return clip;
   }
