@@ -42,17 +42,17 @@ public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
   }
 
   @Override
-  public Rectangle asRectangle() {
+  public final Rectangle asRectangle() {
     return new Rectangle(x(), y(), width(), height());
   }
 
   @Override
-  public int x() {
+  public final int x() {
     return 0;
   }
 
   @Override
-  public int y() {
+  public final int y() {
     return 0;
   }
 
