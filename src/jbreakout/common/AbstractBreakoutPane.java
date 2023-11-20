@@ -10,14 +10,9 @@ import jbreakout.factory.AbstractPaddleFactory;
 
 public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
 
-  private final Point point;
   private Brick[] bricks;
   private Ball ball;
   private Paddle paddle;
-
-  public AbstractBreakoutPane(Point point) {
-    this.point = point.getLocation();
-  }
 
   public abstract void update();
 
@@ -53,12 +48,12 @@ public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
 
   @Override
   public int x() {
-    return point.x;
+    return 0;
   }
 
   @Override
   public int y() {
-    return point.y;
+    return 0;
   }
 
   protected Brick[] bricks() {

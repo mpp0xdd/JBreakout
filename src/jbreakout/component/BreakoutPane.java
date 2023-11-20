@@ -21,10 +21,6 @@ public class BreakoutPane extends AbstractBreakoutPane {
   private int turn = 1;
   private int totalScore = 0;
 
-  public BreakoutPane(Point point) {
-    super(point);
-  }
-
   @Override
   public void update() {
     if (!ball().isVisible()) {
