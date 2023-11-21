@@ -7,9 +7,9 @@ import java.awt.Point;
 import jbreakout.common.AbstractBreakoutPane;
 import jbreakout.common.Brick;
 import jbreakout.common.Velocity;
-import jbreakout.factory.AbstractBallFactory;
-import jbreakout.factory.AbstractBrickFactory;
-import jbreakout.factory.AbstractPaddleFactory;
+import jbreakout.common.factory.AbstractBallFactory;
+import jbreakout.common.factory.AbstractBrickFactory;
+import jbreakout.common.factory.AbstractPaddleFactory;
 import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
 

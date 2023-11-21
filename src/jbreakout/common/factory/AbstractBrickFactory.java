@@ -1,4 +1,4 @@
-package jbreakout.factory;
+package jbreakout.common.factory;
 
 import java.awt.Point;
 import jbreakout.common.Brick;

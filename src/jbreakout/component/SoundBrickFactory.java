@@ -6,7 +6,7 @@ import static java.awt.Color.RED;
 import static java.awt.Color.YELLOW;
 import java.awt.Color;
 import java.awt.Point;
-import jbreakout.factory.AbstractBrickFactory;
+import jbreakout.common.factory.AbstractBrickFactory;
 
 public class SoundBrickFactory extends AbstractBrickFactory<SoundBrick> {
 
