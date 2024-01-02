@@ -7,8 +7,8 @@ import jbreakout.common.factory.AbstractBallFactory;
 public class SoundBallFactory extends AbstractBallFactory<SoundBall> {
 
   @Override
-  public SoundBall createBall(Velocity velocity, Point location) {
-    return new SoundBall(velocity, location, size());
+  public SoundBall createBall(Velocity velocity, Point point) {
+    return new SoundBall(velocity, point, size());
   }
 
   @Override

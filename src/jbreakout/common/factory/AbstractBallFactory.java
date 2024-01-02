@@ -6,7 +6,7 @@ import jbreakout.common.Velocity;
 
 public abstract class AbstractBallFactory<T extends Ball> {
 
-  public abstract T createBall(Velocity velocity, Point location);
+  public abstract T createBall(Velocity velocity, Point point);
 
   public abstract int size();
 }
