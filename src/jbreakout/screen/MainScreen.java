@@ -38,7 +38,7 @@ public class MainScreen extends GameScreen {
   }
 
   @Override
-  public void paintComponent(Graphics g) {
+  protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     breakoutPane.draw(g);
   }
