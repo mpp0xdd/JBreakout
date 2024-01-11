@@ -4,16 +4,16 @@ import static jbreakout.common.Constants.GAME_LOOP_INTERVAL;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import jbreakout.common.AbstractBreakoutPane;
+import jbreakout.common.BreakoutPane;
 import jbreakout.resource.SoundFactory;
 import jglib.component.GameScreen;
 import jglib.util.GameUtilities;
 
 public class MainScreen extends GameScreen {
 
-  private final AbstractBreakoutPane breakoutPane;
+  private final BreakoutPane breakoutPane;
 
-  public MainScreen(AbstractBreakoutPane breakoutPane) {
+  public MainScreen(BreakoutPane breakoutPane) {
     this.breakoutPane = breakoutPane;
     breakoutPane.initializeComponent();
     setScreenSize(breakoutPane.width(), breakoutPane.height());

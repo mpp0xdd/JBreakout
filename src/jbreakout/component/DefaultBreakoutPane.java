@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
-import jbreakout.common.AbstractBreakoutPane;
+import jbreakout.common.BreakoutPane;
 import jbreakout.common.Brick;
 import jbreakout.common.Velocity;
 import jbreakout.common.factory.AbstractBallFactory;
@@ -13,7 +13,7 @@ import jbreakout.common.factory.AbstractPaddleFactory;
 import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
 
-public class BreakoutPane extends AbstractBreakoutPane {
+public class DefaultBreakoutPane extends BreakoutPane {
 
   private boolean isGameOver = false;
   private int bricksEliminated = 0;

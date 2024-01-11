@@ -8,7 +8,7 @@ import jbreakout.common.factory.AbstractBallFactory;
 import jbreakout.common.factory.AbstractBrickFactory;
 import jbreakout.common.factory.AbstractPaddleFactory;
 
-public abstract class AbstractBreakoutPane implements Drawable, Rectangular {
+public abstract class BreakoutPane implements Drawable, Rectangular {
 
   private Brick[] bricks;
   private Ball ball;
