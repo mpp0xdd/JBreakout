@@ -4,7 +4,9 @@ import java.awt.Rectangle;
 
 public interface Rectangular {
 
-  Rectangle asRectangle();
+  default Rectangle asRectangle() {
+    return new Rectangle(x(), y(), width(), height());
+  }
 
   int x();
 

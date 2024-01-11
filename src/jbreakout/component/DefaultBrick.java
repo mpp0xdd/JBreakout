@@ -123,9 +123,4 @@ class DefaultBrick implements Brick {
 
     return null;
   }
-
-  @Override
-  public Rectangle asRectangle() {
-    return new Rectangle(x, y, width, height);
-  }
 }
