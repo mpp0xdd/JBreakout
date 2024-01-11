@@ -1,6 +1,6 @@
 package jbreakout.common;
 
-public interface Brick extends Bounceable, Rectangular, Drawable {
+public interface Brick extends Bounceable<Ball>, Rectangular, Drawable {
 
   int score();
 

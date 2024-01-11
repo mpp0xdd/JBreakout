@@ -1,5 +1,5 @@
 package jbreakout.common;
 
-public interface Bounceable {
-  Ball rebound(Ball ball);
+public interface Bounceable<T> {
+  T rebound(T object);
 }
