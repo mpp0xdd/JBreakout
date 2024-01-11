@@ -5,7 +5,7 @@ import jbreakout.common.Velocity;
 import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
 
-class SoundBall extends Ball {
+class SoundBall extends DefaultBall {
 
   public SoundBall(Velocity velocity, Point location, int size) {
     super(velocity, location, size);

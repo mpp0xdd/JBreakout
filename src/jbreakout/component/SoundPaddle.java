@@ -5,7 +5,7 @@ import jbreakout.common.Ball;
 import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
 
-class SoundPaddle extends Paddle {
+class SoundPaddle extends DefaultPaddle {
 
   public SoundPaddle(Point point, int width, int height) {
     super(point, width, height);

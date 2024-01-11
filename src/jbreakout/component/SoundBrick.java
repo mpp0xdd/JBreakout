@@ -6,7 +6,7 @@ import javax.sound.sampled.Clip;
 import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
 
-class SoundBrick extends Brick {
+class SoundBrick extends DefaultBrick {
   private final Clip eliminateClip = SoundFactory.newBrickEliminateClip().orElse(null);
 
   public SoundBrick(Color color, int width, int height, int x, int y) {

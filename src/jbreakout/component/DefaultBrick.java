@@ -9,8 +9,9 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import jbreakout.common.Ball;
+import jbreakout.common.Brick;
 
-class Brick implements jbreakout.common.Brick {
+class DefaultBrick implements Brick {
 
   protected Color color;
   protected int width;
@@ -19,7 +20,7 @@ class Brick implements jbreakout.common.Brick {
   protected int y;
   protected boolean eliminated = false;
 
-  public Brick(Color color, int width, int height, int x, int y) {
+  public DefaultBrick(Color color, int width, int height, int x, int y) {
     this.color = color;
     this.width = width;
     this.height = height;

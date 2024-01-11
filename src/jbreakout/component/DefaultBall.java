@@ -3,9 +3,10 @@ package jbreakout.component;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import jbreakout.common.Ball;
 import jbreakout.common.Velocity;
 
-class Ball implements jbreakout.common.Ball {
+class DefaultBall implements Ball {
 
   private Velocity velocity;
   private final Point location;
@@ -13,7 +14,7 @@ class Ball implements jbreakout.common.Ball {
   private boolean isAccelerating = false;
   private boolean visible = false;
 
-  public Ball(Velocity velocity, Point location, int size) {
+  public DefaultBall(Velocity velocity, Point location, int size) {
     this.velocity = velocity;
     this.location = location.getLocation();
     this.size = size;

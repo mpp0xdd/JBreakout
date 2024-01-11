@@ -3,10 +3,11 @@ package jbreakout.component;
 import java.awt.Color;
 import java.awt.Point;
 import jbreakout.common.Ball;
+import jbreakout.common.Paddle;
 
-class Paddle extends Brick implements jbreakout.common.Paddle {
+class DefaultPaddle extends DefaultBrick implements Paddle {
 
-  public Paddle(Point point, int width, int height) {
+  public DefaultPaddle(Point point, int width, int height) {
     super(Color.BLUE, width, height, point.x, point.y);
   }
 
