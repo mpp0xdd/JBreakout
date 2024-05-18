@@ -12,6 +12,7 @@ import jbreakout.common.factory.AbstractBrickFactory;
 import jbreakout.common.factory.AbstractPaddleFactory;
 import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
+import jglib.util.StringDrawer;
 
 public class DefaultBreakoutPane extends BreakoutPane {
 
@@ -85,8 +86,9 @@ public class DefaultBreakoutPane extends BreakoutPane {
     g.fillRect(0, 0, width(), height());
 
     prepareToDrawString(g);
-    GameUtilities.drawString(g, 10, 0, String.valueOf(round), String.format(" %03d", score));
-    GameUtilities.drawStringFromTopRight(
+    StringDrawer.LEFT.draw(g, 10, 0, String.valueOf(round), String.format(" %03d", score));
+
+    StringDrawer.RIGHT.draw(
         g, width() - 10, 0, String.format("%d     ", turn), String.format(" %03d", totalScore));
 
     for (Brick brick : bricks()) brick.draw(g);
@@ -95,7 +97,7 @@ public class DefaultBreakoutPane extends BreakoutPane {
 
     if (isGameOver) {
       prepareToDrawString(g);
-      GameUtilities.drawStringAfterCentering(g, width() / 2, height() / 2, "Game Over!");
+      StringDrawer.CENTER.draw(g, width() / 2, height() / 2, "Game Over!");
     }
   }
 
