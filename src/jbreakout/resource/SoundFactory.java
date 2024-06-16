@@ -18,19 +18,19 @@ public final class SoundFactory {
   static {
     Optional<Clip> clip;
 
-    clip = GameUtilities.loadClip(SoundFactory.class.getResource("sounds/bgm.wav"));
+    clip = GameUtilities.loadClip(SoundFactory.class, "sounds/bgm.wav");
     clip.ifPresent(c -> GameUtilities.setVolume(c, 0.7f));
     MAIN_SCREEN_BGM = clip.orElse(null);
 
-    clip = GameUtilities.loadClip(SoundFactory.class.getResource("sounds/ball_fall.wav"));
+    clip = GameUtilities.loadClip(SoundFactory.class, "sounds/ball_fall.wav");
     clip.ifPresent(c -> GameUtilities.setVolume(c, 0.7f));
     BALL_FALL = clip.orElse(null);
 
-    clip = GameUtilities.loadClip(SoundFactory.class.getResource("sounds/ball_bounce.wav"));
+    clip = GameUtilities.loadClip(SoundFactory.class, "sounds/ball_bounce.wav");
     clip.ifPresent(c -> GameUtilities.setVolume(c, 0.75f));
     BALL_BOUNCE = clip.orElse(null);
 
-    clip = GameUtilities.loadClip(SoundFactory.class.getResource("sounds/paddle_rebound.wav"));
+    clip = GameUtilities.loadClip(SoundFactory.class, "sounds/paddle_rebound.wav");
     clip.ifPresent(c -> GameUtilities.setVolume(c, 0.75f));
     PADDLE_REBOUND = clip.orElse(null);
   }
@@ -52,8 +52,7 @@ public final class SoundFactory {
   }
 
   public static Optional<Clip> newBrickEliminateClip() {
-    Optional<Clip> clip =
-        GameUtilities.loadClip(SoundFactory.class.getResource("sounds/brick_eliminate.wav"));
+    Optional<Clip> clip = GameUtilities.loadClip(SoundFactory.class, "sounds/brick_eliminate.wav");
     clip.ifPresent(c -> GameUtilities.setVolume(c, 0.75f));
     return clip;
   }
