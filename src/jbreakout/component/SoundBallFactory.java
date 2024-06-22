@@ -4,7 +4,7 @@ import java.awt.Point;
 import jbreakout.common.Velocity;
 import jbreakout.common.factory.AbstractBallFactory;
 
-public class SoundBallFactory extends AbstractBallFactory<SoundBall> {
+public class SoundBallFactory implements AbstractBallFactory<SoundBall> {
 
   @Override
   public SoundBall createBall(Velocity velocity, Point point) {

@@ -3,7 +3,7 @@ package jbreakout.component;
 import java.awt.Point;
 import jbreakout.common.factory.AbstractPaddleFactory;
 
-public class SoundPaddleFactory extends AbstractPaddleFactory<SoundPaddle> {
+public class SoundPaddleFactory implements AbstractPaddleFactory<SoundPaddle> {
 
   @Override
   public SoundPaddle createPaddle(Point point) {
