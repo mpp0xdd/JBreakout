@@ -7,9 +7,9 @@ import java.awt.Point;
 import jbreakout.common.BreakoutPane;
 import jbreakout.common.Brick;
 import jbreakout.common.Velocity;
-import jbreakout.common.factory.AbstractBallFactory;
-import jbreakout.common.factory.AbstractBrickFactory;
-import jbreakout.common.factory.AbstractPaddleFactory;
+import jbreakout.common.factory.BallFactory;
+import jbreakout.common.factory.BrickFactory;
+import jbreakout.common.factory.PaddleFactory;
 import jbreakout.resource.SoundFactory;
 import jglib.util.GameUtilities;
 import jglib.util.StringDrawer;
@@ -157,17 +157,17 @@ public class DefaultBreakoutPane extends BreakoutPane {
   }
 
   @Override
-  protected AbstractBrickFactory<?> brickFactory() {
+  protected BrickFactory<?> brickFactory() {
     return new SoundBrickFactory();
   }
 
   @Override
-  protected AbstractBallFactory<?> ballFactory() {
+  protected BallFactory<?> ballFactory() {
     return new SoundBallFactory();
   }
 
   @Override
-  protected AbstractPaddleFactory<?> paddleFactory() {
+  protected PaddleFactory<?> paddleFactory() {
     return new SoundPaddleFactory();
   }
 

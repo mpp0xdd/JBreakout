@@ -4,9 +4,9 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Timer;
 import java.util.TimerTask;
-import jbreakout.common.factory.AbstractBallFactory;
-import jbreakout.common.factory.AbstractBrickFactory;
-import jbreakout.common.factory.AbstractPaddleFactory;
+import jbreakout.common.factory.BallFactory;
+import jbreakout.common.factory.BrickFactory;
+import jbreakout.common.factory.PaddleFactory;
 
 public abstract class BreakoutPane implements Drawable, Rectangular {
 
@@ -91,9 +91,9 @@ public abstract class BreakoutPane implements Drawable, Rectangular {
 
   protected abstract Point paddlePoint();
 
-  protected abstract AbstractBrickFactory<?> brickFactory();
+  protected abstract BrickFactory<?> brickFactory();
 
-  protected abstract AbstractBallFactory<?> ballFactory();
+  protected abstract BallFactory<?> ballFactory();
 
-  protected abstract AbstractPaddleFactory<?> paddleFactory();
+  protected abstract PaddleFactory<?> paddleFactory();
 }

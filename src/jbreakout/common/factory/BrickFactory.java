@@ -3,7 +3,7 @@ package jbreakout.common.factory;
 import java.awt.Point;
 import jbreakout.common.Brick;
 
-public interface AbstractBrickFactory<T extends Brick> {
+public interface BrickFactory<T extends Brick> {
 
   public abstract T[] createBricks(Point point);
 
