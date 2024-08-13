@@ -127,7 +127,7 @@ public class DefaultBreakoutPane extends BreakoutPane {
   }
 
   @Override
-  protected Velocity ballVelocity() {
+  protected Velocity randomBallVelocity() {
     final int vx = (5 + (int) ((5 + 1) * Math.random())) * (Math.random() >= 0.5 ? 1 : -1);
     final int vy = 5 + (int) ((5 + 1) * Math.random());
     return Velocity.of(vx, vy);
@@ -139,7 +139,7 @@ public class DefaultBreakoutPane extends BreakoutPane {
   }
 
   @Override
-  protected Point ballPoint() {
+  protected Point randomBallPoint() {
     final int x = (int) ((width() - ballFactory().size()) * Math.random());
 
     final int bricksY = bricksPoint().y;

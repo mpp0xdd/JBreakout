@@ -18,7 +18,7 @@ public abstract class BreakoutPane implements Drawable, Rectangular {
 
   public void initializeComponent() {
     this.bricks = brickFactory().createBricks(bricksPoint());
-    this.ball = ballFactory().createBall(ballVelocity(), ballPoint());
+    this.ball = ballFactory().createBall(randomBallVelocity(), randomBallPoint());
     this.paddle = paddleFactory().createPaddle(paddlePoint());
   }
 
@@ -64,7 +64,7 @@ public abstract class BreakoutPane implements Drawable, Rectangular {
   }
 
   protected void relocateBall() {
-    this.ball = ballFactory().createBall(ballVelocity(), ballPoint());
+    this.ball = ballFactory().createBall(randomBallVelocity(), randomBallPoint());
     Timer roundTimer = new Timer();
     roundTimer.schedule(
         new TimerTask() {
@@ -83,11 +83,11 @@ public abstract class BreakoutPane implements Drawable, Rectangular {
 
   protected abstract long roundInterval();
 
-  protected abstract Velocity ballVelocity();
+  protected abstract Velocity randomBallVelocity();
 
   protected abstract Point bricksPoint();
 
-  protected abstract Point ballPoint();
+  protected abstract Point randomBallPoint();
 
   protected abstract Point paddlePoint();
 
