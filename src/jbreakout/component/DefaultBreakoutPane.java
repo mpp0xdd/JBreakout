@@ -23,6 +23,10 @@ public class DefaultBreakoutPane extends BreakoutPane {
   private int turn = 1;
   private int totalScore = 0;
 
+  private final BrickFactory<?> BRICK_FACTORY = new SoundBrickFactory();
+  private final BallFactory<?> BALL_FACTORY = new SoundBallFactory();
+  private final PaddleFactory<?> PADDLE_FACTORY = new SoundPaddleFactory();
+
   @Override
   public void update() {
     if (!ball().isVisible()) {
@@ -158,17 +162,17 @@ public class DefaultBreakoutPane extends BreakoutPane {
 
   @Override
   protected BrickFactory<?> brickFactory() {
-    return new SoundBrickFactory();
+    return BRICK_FACTORY;
   }
 
   @Override
   protected BallFactory<?> ballFactory() {
-    return new SoundBallFactory();
+    return BALL_FACTORY;
   }
 
   @Override
   protected PaddleFactory<?> paddleFactory() {
-    return new SoundPaddleFactory();
+    return PADDLE_FACTORY;
   }
 
   private void prepareToDrawString(Graphics g) {
