@@ -84,6 +84,8 @@ public abstract class BreakoutPane implements Drawable, Rectangular {
 
   protected void relocateBall() {
     this.ball = ballFactory().createBall(randomBallVelocity(), randomBallPoint());
+    this.ball.setVisible(false);
+
     Timer roundTimer = new Timer();
     roundTimer.schedule(
         new TimerTask() {
