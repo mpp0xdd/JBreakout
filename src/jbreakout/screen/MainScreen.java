@@ -15,7 +15,6 @@ public class MainScreen extends GameScreen {
 
   public MainScreen(BreakoutPane breakoutPane) {
     this.breakoutPane = breakoutPane;
-    breakoutPane.initializeComponent();
     setScreenSize(breakoutPane.width(), breakoutPane.height());
     setGameLoopInterval(GAME_LOOP_INTERVAL);
 

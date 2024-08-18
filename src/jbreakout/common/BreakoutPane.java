@@ -2,6 +2,7 @@ package jbreakout.common;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 import jbreakout.common.factory.BallFactory;
@@ -10,17 +11,23 @@ import jbreakout.common.factory.PaddleFactory;
 
 public abstract class BreakoutPane implements Drawable, Rectangular {
 
+  private final BrickFactory<?> brickFactory;
+  private final BallFactory<?> ballFactory;
+  private final PaddleFactory<?> paddleFactory;
+
   private Brick[] bricks;
   private Ball ball;
   private Paddle paddle;
 
-  public abstract void update();
-
-  public void initializeComponent() {
-    this.bricks = brickFactory().createBricks(bricksPoint());
-    this.ball = ballFactory().createBall(randomBallVelocity(), randomBallPoint());
-    this.paddle = paddleFactory().createPaddle(paddlePoint());
+  public BreakoutPane(
+      BrickFactory<?> brickFactory, BallFactory<?> ballFactory, PaddleFactory<?> paddleFactory) {
+    this.brickFactory = Objects.requireNonNull(brickFactory);
+    this.ballFactory = Objects.requireNonNull(ballFactory);
+    this.paddleFactory = Objects.requireNonNull(paddleFactory);
+    initializeComponent();
   }
+
+  public abstract void update();
 
   public void startRound() {
     this.bricks = brickFactory().createBricks(bricksPoint());
@@ -51,15 +58,27 @@ public abstract class BreakoutPane implements Drawable, Rectangular {
     return 0;
   }
 
-  protected Brick[] bricks() {
+  protected final BrickFactory<?> brickFactory() {
+    return brickFactory;
+  }
+
+  protected final BallFactory<?> ballFactory() {
+    return ballFactory;
+  }
+
+  protected final PaddleFactory<?> paddleFactory() {
+    return paddleFactory;
+  }
+
+  protected final Brick[] bricks() {
     return bricks;
   }
 
-  protected Ball ball() {
+  protected final Ball ball() {
     return ball;
   }
 
-  protected Paddle paddle() {
+  protected final Paddle paddle() {
     return paddle;
   }
 
@@ -91,9 +110,9 @@ public abstract class BreakoutPane implements Drawable, Rectangular {
 
   protected abstract Point paddlePoint();
 
-  protected abstract BrickFactory<?> brickFactory();
-
-  protected abstract BallFactory<?> ballFactory();
-
-  protected abstract PaddleFactory<?> paddleFactory();
+  private void initializeComponent() {
+    this.bricks = brickFactory().createBricks(bricksPoint());
+    this.ball = ballFactory().createBall(randomBallVelocity(), randomBallPoint());
+    this.paddle = paddleFactory().createPaddle(paddlePoint());
+  }
 }

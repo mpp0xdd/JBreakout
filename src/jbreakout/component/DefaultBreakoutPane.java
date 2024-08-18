@@ -23,9 +23,10 @@ public class DefaultBreakoutPane extends BreakoutPane {
   private int turn = 1;
   private int totalScore = 0;
 
-  private final BrickFactory<?> BRICK_FACTORY = new SoundBrickFactory();
-  private final BallFactory<?> BALL_FACTORY = new SoundBallFactory();
-  private final PaddleFactory<?> PADDLE_FACTORY = new SoundPaddleFactory();
+  public DefaultBreakoutPane(
+      BrickFactory<?> brickFactory, BallFactory<?> ballFactory, PaddleFactory<?> paddleFactory) {
+    super(brickFactory, ballFactory, paddleFactory);
+  }
 
   @Override
   public void update() {
@@ -158,21 +159,6 @@ public class DefaultBreakoutPane extends BreakoutPane {
   @Override
   protected Point paddlePoint() {
     return new Point(width() / 2 - paddleFactory().width() / 2, 580);
-  }
-
-  @Override
-  protected BrickFactory<?> brickFactory() {
-    return BRICK_FACTORY;
-  }
-
-  @Override
-  protected BallFactory<?> ballFactory() {
-    return BALL_FACTORY;
-  }
-
-  @Override
-  protected PaddleFactory<?> paddleFactory() {
-    return PADDLE_FACTORY;
   }
 
   private void prepareToDrawString(Graphics g) {
