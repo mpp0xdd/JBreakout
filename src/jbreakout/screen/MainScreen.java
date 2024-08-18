@@ -44,6 +44,5 @@ public class MainScreen extends GameScreen {
   @Override
   protected void runGameLoop() {
     breakoutPane.update();
-    repaint();
   }
 }
