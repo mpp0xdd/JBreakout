@@ -5,15 +5,15 @@ import jbreakout.common.Brick;
 
 public interface BrickFactory<T extends Brick> {
 
-  public abstract T[] createBricks(Point point);
+  T[] createBricks(Point point);
 
-  public abstract int rows();
+  int rows();
 
-  public abstract int columns();
+  int columns();
 
-  public abstract int width();
+  int width();
 
-  public abstract int height();
+  int height();
 
-  public abstract int margin();
+  int margin();
 }
