@@ -32,15 +32,17 @@ class DefaultBrick implements Brick {
   public int score() {
     if (color.equals(YELLOW)) {
       return 1;
-    } else if (color.equals(GREEN)) {
-      return 3;
-    } else if (color.equals(ORANGE)) {
-      return 5;
-    } else if (color.equals(RED)) {
-      return 7;
-    } else {
-      return 1;
     }
+    if (color.equals(GREEN)) {
+      return 3;
+    }
+    if (color.equals(ORANGE)) {
+      return 5;
+    }
+    if (color.equals(RED)) {
+      return 7;
+    }
+    return 1;
   }
 
   @Override
