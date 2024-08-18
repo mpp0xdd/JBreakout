@@ -88,7 +88,7 @@ public class DefaultBreakoutPane extends BreakoutPane {
   @Override
   public void draw(Graphics g) {
     g.setColor(Color.BLACK);
-    g.fillRect(0, 0, width(), height());
+    g.fillRect(x(), y(), width(), height());
 
     prepareToDrawString(g);
     StringDrawer.LEFT.draw(g, 10, 0, String.valueOf(round), String.format(" %03d", score));
