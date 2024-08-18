@@ -75,12 +75,12 @@ class DefaultBall implements Ball {
 
   @Override
   public void bounceX() {
-    this.velocity = velocity.negateVX();
+    this.velocity = velocity.negateX();
   }
 
   @Override
   public void bounceY() {
-    this.velocity = velocity.negateVY();
+    this.velocity = velocity.negateY();
   }
 
   @Override
@@ -90,7 +90,7 @@ class DefaultBall implements Ball {
 
   @Override
   public void move() {
-    location.translate(velocity.vx(), velocity.vy());
+    location.translate(velocity.x(), velocity.y());
   }
 
   @Override

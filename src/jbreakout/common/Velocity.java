@@ -6,41 +6,41 @@ public final class Velocity {
 
   public static final Velocity ZERO = of(0, 0);
 
-  public static Velocity of(int vx, int vy) {
-    return new Velocity(vx, vy);
+  public static Velocity of(int x, int y) {
+    return new Velocity(x, y);
   }
 
-  private final int vx;
-  private final int vy;
+  private final int x;
+  private final int y;
 
-  private Velocity(int vx, int vy) {
-    this.vx = vx;
-    this.vy = vy;
+  private Velocity(int x, int y) {
+    this.x = x;
+    this.y = y;
   }
 
-  public int vx() {
-    return vx;
+  public int x() {
+    return x;
   }
 
-  public int vy() {
-    return vy;
+  public int y() {
+    return y;
   }
 
-  public Velocity negateVX() {
-    return of(-vx, vy);
+  public Velocity negateX() {
+    return of(-x, y);
   }
 
-  public Velocity negateVY() {
-    return of(vx, -vy);
+  public Velocity negateY() {
+    return of(x, -y);
   }
 
   public Velocity negate() {
-    return of(-vx, -vy);
+    return of(-x, -y);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(vx, vy);
+    return Objects.hash(x, y);
   }
 
   @Override
@@ -49,6 +49,6 @@ public final class Velocity {
     if (obj == null) return false;
     if (getClass() != obj.getClass()) return false;
     Velocity other = (Velocity) obj;
-    return vx == other.vx && vy == other.vy;
+    return x == other.x && y == other.y;
   }
 }
