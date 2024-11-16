@@ -1,22 +1,22 @@
 package jbreakout.screen;
 
-import static jbreakout.common.Constants.GAME_LOOP_INTERVAL;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import jbreakout.common.BreakoutPane;
 import jbreakout.resource.SoundFactory;
-import jglib.component.GameScreen;
+import jglib.component.GameScreenEx;
+import jglib.util.FrameRate;
 import jglib.util.GameUtilities;
 
-public class MainScreen extends GameScreen {
+public class MainScreen extends GameScreenEx {
 
   private final BreakoutPane breakoutPane;
 
   public MainScreen(BreakoutPane breakoutPane) {
     this.breakoutPane = breakoutPane;
     setScreenSize(breakoutPane.width(), breakoutPane.height());
-    setGameLoopInterval(GAME_LOOP_INTERVAL);
+    setFrameRate(FrameRate.FPS60);
 
     addMouseMotionListener(
         new MouseMotionAdapter() {
