@@ -5,8 +5,8 @@ import jbreakout.component.SoundBallFactory;
 import jbreakout.component.SoundBrickFactory;
 import jbreakout.component.SoundPaddleFactory;
 import jbreakout.screen.MainScreen;
-import jglib.base.Game;
 import jglib.component.GameWindow;
+import jglib.core.Game;
 
 public class JBreakout extends Game {
 
