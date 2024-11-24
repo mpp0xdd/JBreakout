@@ -8,6 +8,8 @@ import java.util.TimerTask;
 import jbreakout.common.factory.BallFactory;
 import jbreakout.common.factory.BrickFactory;
 import jbreakout.common.factory.PaddleFactory;
+import jglib.util.spec.Drawable;
+import jglib.util.spec.Rectangular;
 
 public abstract class BreakoutPane implements Drawable, Rectangular {
 

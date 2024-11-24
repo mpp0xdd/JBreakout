@@ -1,5 +1,7 @@
 package jbreakout.common;
 
+import jglib.util.spec.Drawable;
+
 public interface Ball extends Drawable {
 
   int size();
