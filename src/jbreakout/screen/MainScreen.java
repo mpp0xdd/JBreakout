@@ -6,8 +6,8 @@ import java.awt.event.MouseMotionAdapter;
 import jbreakout.common.BreakoutPane;
 import jbreakout.resource.SoundFactory;
 import jglib.component.GameScreenEx;
-import jglib.util.FrameRate;
 import jglib.util.GameUtilities;
+import jglib.util.model.FrameRate;
 
 public class MainScreen extends GameScreenEx {
 
