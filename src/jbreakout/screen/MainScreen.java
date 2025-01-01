@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import jbreakout.common.BreakoutPane;
 import jbreakout.resource.SoundFactory;
-import jglib.component.GameScreenEx;
+import jglib.screen.GameScreenEx;
 import jglib.util.GameUtilities;
 import jglib.util.model.FrameRate;
 
